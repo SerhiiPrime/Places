@@ -15,4 +15,20 @@ class PlaceCell: UICollectionViewCell {
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     
+    var place: Place! {
+        didSet {
+            updateUI()
+        }
+    }
+    
+    
+    func updateUI() {
+        placeNameLabel.text = place.name
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        placeNameLabel.text = nil
+        placeImageView.image = nil
+    }
 }
