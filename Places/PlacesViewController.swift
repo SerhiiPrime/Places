@@ -13,7 +13,9 @@ class PlacesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        ServerManager.sharedManager.fetchNearbyVenues(lat: 37.332112, long: -122.0329646, query: "Infinite loop") { restoration in
+            print("sfssdfsdf")
+        }
     }
 
     override func didReceiveMemoryWarning() {

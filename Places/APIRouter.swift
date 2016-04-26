@@ -27,7 +27,7 @@ public enum APIRouter: URLRequestConvertible {
                     "ll": "\(lat),\(long)",
                     "query": query
                 ]
-                return ("venues/search", .GET, params, .JSON, [:])
+                return ("venues/search", .GET, params, .URL, [:])
             }
         }()
         
@@ -36,7 +36,7 @@ public enum APIRouter: URLRequestConvertible {
         URLRequest.HTTPMethod = result.method.rawValue
         URLRequest.timeoutInterval = NSTimeInterval(60)
         result.headers.forEach { URLRequest.setValue($1, forHTTPHeaderField: $0) }
-        
+    
         return result.encoding.encode(URLRequest, parameters: result.parameters).0
     }
 }
