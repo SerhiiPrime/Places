@@ -32,7 +32,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="370"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iceland" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pv8-At-siq">
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="place_placeholder" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pv8-At-siq">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGT-rE-V2J">
@@ -132,7 +132,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="iceland" width="749" height="500"/>
+        <image name="place_placeholder" width="606" height="539"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

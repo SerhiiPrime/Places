@@ -13,6 +13,7 @@ import Alamofire
 public enum APIRouter: URLRequestConvertible {
     
     case SearchVenues(Double, Double, String)
+    case VenueIcon(String)
 
     
     public var URLRequest: NSMutableURLRequest {
@@ -28,6 +29,15 @@ public enum APIRouter: URLRequestConvertible {
                     "query": query
                 ]
                 return ("venues/search", .GET, params, .URL, [:])
+                
+            case .VenueIcon(let id):
+                let params = [
+                    "client_id": Settings.API.clientID,
+                    "client_secret": Settings.API.clientSecret,
+                    "v": Settings.API.versionOfAPI,
+                    "limit": "1"
+                ]
+                return ("venues/\(id)/photos", .GET, params, .URL, [:])
             }
         }()
         
@@ -36,7 +46,7 @@ public enum APIRouter: URLRequestConvertible {
         URLRequest.HTTPMethod = result.method.rawValue
         URLRequest.timeoutInterval = NSTimeInterval(60)
         result.headers.forEach { URLRequest.setValue($1, forHTTPHeaderField: $0) }
-    
+
         return result.encoding.encode(URLRequest, parameters: result.parameters).0
     }
 }

@@ -11,19 +11,49 @@ import MapKit
 import SwiftyJSON
 
 
-struct PlaceIcon {
-    let id: String
-    let prefix: String
-    let sufix: String
+class IconURLConstructor {
+    private let size = "300x300"
+    private var prefix: String
+    private var sufix: String
     
     init?(json: JSON) {
-        guard let id = json["id"].string,
-            prefix = json["prefix"].string,
+        guard let prefix = json["prefix"].string,
             suffix = json["suffix"].string else { return nil }
         
-        self.id = id
         self.prefix = prefix
         self.sufix = suffix
+    }
+    
+    func assembleURL() -> NSURL? {
+        return NSURL(string: "\(prefix)\(size)\(sufix)")
+    }
+}
+
+
+class PlaceIconURL {
+    private var placeIconURL: NSURL?
+    let placeId: String
+    
+    init(placeId: String) {
+        self.placeId = placeId
+    }
+    
+    func palaceIconURL(completion: (NSURL?) -> ()) {
+        
+        if let url = placeIconURL {
+            completion(url)
+        } else {
+            ServerManager.sharedManager.getVenueIcon(placeId) {[weak self] result in
+                if case .Success(let iconConstructor as IconURLConstructor) = result {
+                    let url = iconConstructor.assembleURL()
+                    self?.placeIconURL = url
+                    completion(url)
+                }
+                if case .Failure(_) = result {
+                    completion(nil)
+                }
+            }
+        }
     }
 }
 
@@ -34,7 +64,7 @@ class Place: NSObject, MKAnnotation {
     let name: String?
     let phone: String?
     let address: String?
-    let icon: PlaceIcon?
+    var placeIconURL: PlaceIconURL?
     var title: String? { return name }
     var subtitle: String? { return phone }
     
@@ -48,6 +78,6 @@ class Place: NSObject, MKAnnotation {
         self.name = json["name"].string
         self.phone = json["contact"]["formattedPhone"].string
         self.address = json["address"].string
-        self.icon = PlaceIcon(json: json["categories"])
+        self.placeIconURL = PlaceIconURL(placeId: id)
     }
 }

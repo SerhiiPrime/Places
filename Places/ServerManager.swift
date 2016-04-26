@@ -77,4 +77,35 @@ class ServerManager {
             completion(.Success(venues))
         }
     }
+    
+    func getVenueIcon(id: String, completion: CompletionHandlerType) {
+        
+        Alamofire.request(APIRouter.VenueIcon(id)).validate().responseJSON { response in
+            
+            guard response.result.isSuccess else {
+                print("*** Error while venue icon: \(response.result.error!)")
+                completion(.Failure(response.result.error!))
+                return
+            }
+            
+            guard let responseJSON = response.result.value as? [String: AnyObject] else {
+                fatalError("*** Unexpected json repsonse")
+            }
+            
+            let json = JSON(responseJSON)
+            
+            guard StatusCode(rawValue: json["meta"]["code"].intValue) == .Success else {
+                print("*** Server error: \(json["Error"])")
+                completion(.Failure(Error(code: json["StatusCode"].intValue, message: json["Error"].stringValue)))
+                return
+            }
+            
+            if let iconUrl = IconURLConstructor(json: json["response"]["photos"]["items"][0]) {
+                completion(.Success(iconUrl))
+            } else {
+                completion(.Failure(Error(code: -1, message: "no images")))
+            }
+        }
+    }
+
 }
