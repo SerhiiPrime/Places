@@ -13,8 +13,8 @@ class PlacesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ServerManager.sharedManager.fetchNearbyVenues(lat: 37.332112, long: -122.0329646, query: "Infinite loop") { restoration in
-            print("sfssdfsdf")
+        ServerManager.sharedManager.fetchNearbyVenues(lat: 37.332112, long: -122.0329646, query: "Infinite loop") { result in
+            print(result)
         }
     }
 

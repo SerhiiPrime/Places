@@ -61,17 +61,20 @@ class ServerManager {
             
             let json = JSON(responseJSON)
             print("*** \(#function)\n")
-            print("*** \(json)\n")
             
-            guard StatusCode(rawValue: json["StatusCode"].intValue) == .Success else {
+            guard StatusCode(rawValue: json["meta"]["code"].intValue) == .Success else {
                 print("*** Server error: \(json["Error"])")
                 completion(.Failure(Error(code: json["StatusCode"].intValue, message: json["Error"].stringValue)))
                 return
             }
             
-            completion(.Success(json["response"].object))
+            var venues:[Place] = []
+            for venue in json["response"]["venues"].array! {
+                if let v = Place(json: venue) {
+                    venues.append(v)
+                }
+            }
+            completion(.Success(venues))
         }
-        
     }
-    
 }
