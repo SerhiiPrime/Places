@@ -116,7 +116,7 @@
             </objects>
             <point key="canvasLocation" x="4592" y="-640"/>
         </scene>
-        <!--Web Cams-->
+        <!--Live Cams-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController storyboardIdentifier="WebCamViewController" id="8rJ-Kc-sve" customClass="WebCamViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,9 +127,59 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZmN-rs-lsk">
+                                <rect key="frame" x="0.0" y="140" width="1920" height="940"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yBo-m2-6SV">
+                                    <size key="itemSize" width="550" height="450"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="60" minY="140" maxX="60" maxY="60"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CameraCell" id="7rJ-kI-u7G" customClass="CameraCell" customModule="Places" customModuleProvider="target">
+                                        <rect key="frame" x="60" y="140" width="550" height="450"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="550" height="450"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="place_placeholder" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A6y-Ni-Gos">
+                                                    <rect key="frame" x="0.0" y="0.0" width="550" height="364"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camera Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSY-pJ-jLe">
+                                                    <rect key="frame" x="0.0" y="407" width="542" height="35"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="cameraImageView" destination="A6y-Ni-Gos" id="nMh-EO-E8P"/>
+                                            <outlet property="cameraTitle" destination="pSY-pJ-jLe" id="Cxz-g6-3Ev"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="l31-ZS-Onz"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="7i5-iM-pXY"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZmN-rs-lsk" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="140" id="TAu-X1-0ow"/>
+                            <constraint firstItem="ZmN-rs-lsk" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Uhn-XL-Rne"/>
+                            <constraint firstAttribute="trailing" secondItem="ZmN-rs-lsk" secondAttribute="trailing" id="WeD-qb-N4z"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="ZmN-rs-lsk" secondAttribute="bottom" id="iir-PF-QTf"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Web Cams" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Live Cams" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="cellectionView" destination="ZmN-rs-lsk" id="z21-MV-ABE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,6 +226,5 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="place_placeholder" width="606" height="539"/>
-        <image name="second" width="30" height="30"/>
     </resources>
 </document>

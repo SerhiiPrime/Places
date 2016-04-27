@@ -70,16 +70,12 @@ class PlacesViewController: UIViewController {
 
 extension PlacesViewController: UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return places.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlaceCell.reuseIdentifier, forIndexPath: indexPath) as! PlaceCell
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlaceCell.reuseIdentifier, forIndexPath: indexPath) as? PlaceCell else { return UICollectionViewCell() }
         cell.place = places[indexPath.row]
         return cell
     }

@@ -10,26 +10,36 @@ import UIKit
 
 class WebCamViewController: UIViewController {
 
+    @IBOutlet weak var cellectionView: UICollectionView!
+    
+    var surfCams:[SurfCamera] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        surfCams = SurfCamera.loadCameras()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+
+extension WebCamViewController: UICollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return surfCams.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CameraCell.reuseIdentifier, forIndexPath: indexPath) as? CameraCell else { return UICollectionViewCell() }
+        cell.surfCam = surfCams[indexPath.row]
+        return cell
     }
-    */
+}
 
+
+extension WebCamViewController: UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: [places[indexPath.row]])
+    }
 }
