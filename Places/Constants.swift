@@ -14,4 +14,10 @@ struct GlobalConstants {
     struct SegueIdentifiers {
         static let mapViewController = "MapViewController"
     }
+    
+    struct DefauptParams {
+        static let defaultLat = 37.332112
+        static let defaultLng = -122.0329646
+        static let defaultQuery = "Apple"
+    }
 }

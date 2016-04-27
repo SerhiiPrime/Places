@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         searchController.searchBar.placeholder = NSLocalizedString("Enter keyword (e.g. pizza)", comment: "")
         
         let searchContainer = UISearchContainerViewController(searchController: searchController)
-        searchContainer.title = NSLocalizedString("Search", comment: "")
+        searchContainer.title = NSLocalizedString("Places", comment: "")
 
         let searchNavigationController = UINavigationController(rootViewController: searchContainer)
         return searchNavigationController

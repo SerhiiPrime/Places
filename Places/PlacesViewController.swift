@@ -7,21 +7,38 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 class PlacesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let locationManager = CLLocationManager()
     var places:[Place] = []
+    var fetchLocation = CLLocation(latitude: GlobalConstants.DefauptParams.defaultLat, longitude: GlobalConstants.DefauptParams.defaultLng)
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData("Infinite loop")
+        configureLocationManager()
+        fetchData(GlobalConstants.DefauptParams.defaultQuery)
+    }
+    
+    func configureLocationManager() {
+        locationManager.delegate = self
+        
+        if CLLocationManager.locationServicesEnabled() {
+            if CLLocationManager.authorizationStatus() == .NotDetermined {
+                locationManager.requestWhenInUseAuthorization()
+            } else if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse || CLLocationManager.authorizationStatus() == .AuthorizedAlways {
+                locationManager.requestLocation()
+            }
+        }
     }
     
     func fetchData(query: String) {
-        ServerManager.sharedManager.fetchNearbyVenues(lat: 37.332112, long: -122.0329646, query: query) { [weak self] result in
+        ServerManager.sharedManager.fetchNearbyVenues(lat: fetchLocation.coordinate.latitude, long: fetchLocation.coordinate.longitude, query: query) { [weak self] result in
     
             if case .Success(let places) = result {
                 self?.places = (places as! [Place])
@@ -34,7 +51,7 @@ class PlacesViewController: UIViewController {
     }
     
     func handleError(error: ErrorType) {
-        print("*** Error while refreshing cashpoints \(error)")
+        print("*** Error while fetching places \(error)")
     }
     
     @IBAction func viewOnMapAction(sender: AnyObject) {
@@ -62,7 +79,6 @@ extension PlacesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlaceCell.reuseIdentifier, forIndexPath: indexPath) as! PlaceCell
         cell.place = places[indexPath.row]
         return cell
@@ -83,5 +99,21 @@ extension PlacesViewController: UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let queryString = searchController.searchBar.text ?? ""
         fetchData(queryString)
+    }
+}
+
+
+extension PlacesViewController: CLLocationManagerDelegate {
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let location = locations.first else {return}
+        fetchLocation = location
+        print("*** --- fetched location \(fetchLocation)")
+        fetchData(GlobalConstants.DefauptParams.defaultQuery)
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("*** Location Manager did Fail With Error \(error)")
     }
 }
