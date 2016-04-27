@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vec-jE-ln5">
-                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <rect key="frame" x="0.0" y="101" width="1920" height="979"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pbS-kN-LNS">
                                     <size key="itemSize" width="300" height="370"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,10 +55,18 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="lMO-lO-eLm"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXX-C8-kEU">
+                                <rect key="frame" x="1399" y="8" width="501" height="86"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="View on map"/>
+                                <connections>
+                                    <action selector="viewOnMapAction:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="K60-Cn-nG2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Vec-jE-ln5" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="VPs-Ve-YV3"/>
+                            <constraint firstItem="Vec-jE-ln5" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="101" id="VPs-Ve-YV3"/>
                             <constraint firstItem="Vec-jE-ln5" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="WiK-Ew-gzI"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Vec-jE-ln5" secondAttribute="bottom" id="ezx-qz-SM4"/>
                             <constraint firstAttribute="trailing" secondItem="Vec-jE-ln5" secondAttribute="trailing" id="l1w-D9-Fdg"/>
@@ -67,11 +75,46 @@
                     <tabBarItem key="tabBarItem" title="Places" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="collectionView" destination="Vec-jE-ln5" id="bDf-y7-343"/>
+                        <segue destination="X6b-as-5v5" kind="show" identifier="MapViewController" id="bzt-un-Vjv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2246" y="-640"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="RZF-z5-Hvr">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="X6b-as-5v5" customClass="MapViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zmg-hr-gbg"/>
+                        <viewControllerLayoutGuide type="bottom" id="2uD-iM-oRb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yUf-6P-laG">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUN-E1-o6c">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <connections>
+                                    <outlet property="delegate" destination="X6b-as-5v5" id="w2j-N1-sr8"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="2uD-iM-oRb" firstAttribute="top" secondItem="oUN-E1-o6c" secondAttribute="bottom" id="UBa-fG-dQo"/>
+                            <constraint firstItem="oUN-E1-o6c" firstAttribute="top" secondItem="zmg-hr-gbg" secondAttribute="bottom" id="d7K-3e-Yuy"/>
+                            <constraint firstItem="oUN-E1-o6c" firstAttribute="leading" secondItem="yUf-6P-laG" secondAttribute="leading" id="i0t-RW-abE"/>
+                            <constraint firstAttribute="trailing" secondItem="oUN-E1-o6c" secondAttribute="trailing" id="pUr-BO-NP1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="oUN-E1-o6c" id="kHe-BD-Vco"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cb6-NC-Ach" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4592" y="-640"/>
         </scene>
         <!--Web Cams-->
         <scene sceneID="wg7-f3-ORb">

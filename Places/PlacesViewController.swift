@@ -36,6 +36,18 @@ class PlacesViewController: UIViewController {
     func handleError(error: ErrorType) {
         print("*** Error while refreshing cashpoints \(error)")
     }
+    
+    @IBAction func viewOnMapAction(sender: AnyObject) {
+        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: places)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == GlobalConstants.SegueIdentifiers.mapViewController {
+            let mapVC = segue.destinationViewController as! MapViewController
+            mapVC.places = sender as! [Place]
+        }
+    }
 }
 
 
@@ -61,7 +73,7 @@ extension PlacesViewController: UICollectionViewDataSource {
 extension PlacesViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("select")
+        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: [places[indexPath.row]])
     }
 }
 
