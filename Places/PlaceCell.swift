@@ -18,7 +18,7 @@ class PlaceCell: UICollectionViewCell {
     @IBOutlet weak var placeNameLabel: UILabel!
     
     private let placeholder: UIImage = {
-       return UIImage(named: "place_placeholder")!
+        return UIImage(named: "place_placeholder")!
     }()
     
     var place: Place! {
@@ -27,19 +27,29 @@ class PlaceCell: UICollectionViewCell {
         }
     }
     
+    var imageFetchTask:NSURLSessionTask?
+    
     
     func updateUI() {
-        placeNameLabel.text = place.name
+        placeNameLabel.text = place?.name
         
-        place.placeIconURL?.palaceIconURL { [weak self] url in
-            if let u = url, wself = self {
-                wself.placeImageView.af_setImageWithURL(u, placeholderImage: wself.placeholder)
+        if let currentPlace = place {
+            
+        imageFetchTask = ServerManager.sharedManager.getVenueIcon(currentPlace.id, completion: { [weak self] result in
+            
+            if let wself = self, case .Success(let urlConstructor as IconURLConstructor) = result {
+                if let url = urlConstructor.assembleURL() {
+                    wself.placeImageView.af_setImageWithURL(url, placeholderImage: wself.placeholder)
+                }
             }
+        })
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        place = nil
+        imageFetchTask?.cancel()
         placeNameLabel.text = nil
         placeImageView.image = self.placeholder
     }

@@ -78,9 +78,9 @@ class ServerManager {
         }
     }
     
-    func getVenueIcon(id: String, completion: CompletionHandlerType) {
+    func getVenueIcon(id: String, completion: CompletionHandlerType) -> NSURLSessionTask {
         
-        Alamofire.request(APIRouter.VenueIcon(id)).validate().responseJSON { response in
+        let request = Alamofire.request(APIRouter.VenueIcon(id)).validate().responseJSON { response in
             
             guard response.result.isSuccess else {
                 print("*** Error while venue icon: \(response.result.error!)")
@@ -106,6 +106,7 @@ class ServerManager {
                 completion(.Failure(Error(code: -1, message: "no images")))
             }
         }
+        
+        return request.task
     }
-
 }

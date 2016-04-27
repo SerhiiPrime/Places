@@ -30,41 +30,12 @@ class IconURLConstructor {
 }
 
 
-class PlaceIconURL {
-    private var placeIconURL: NSURL?
-    let placeId: String
-    
-    init(placeId: String) {
-        self.placeId = placeId
-    }
-    
-    func palaceIconURL(completion: (NSURL?) -> ()) {
-        
-        if let url = placeIconURL {
-            completion(url)
-        } else {
-            ServerManager.sharedManager.getVenueIcon(placeId) {[weak self] result in
-                if case .Success(let iconConstructor as IconURLConstructor) = result {
-                    let url = iconConstructor.assembleURL()
-                    self?.placeIconURL = url
-                    completion(url)
-                }
-                if case .Failure(_) = result {
-                    completion(nil)
-                }
-            }
-        }
-    }
-}
-
-
 class Place: NSObject, MKAnnotation {
     let id: String
     let coordinate: CLLocationCoordinate2D
     let name: String?
     let phone: String?
     let address: String?
-    var placeIconURL: PlaceIconURL?
     var title: String? { return name }
     var subtitle: String? { return phone }
     
@@ -78,6 +49,5 @@ class Place: NSObject, MKAnnotation {
         self.name = json["name"].string
         self.phone = json["contact"]["formattedPhone"].string
         self.address = json["address"].string
-        self.placeIconURL = PlaceIconURL(placeId: id)
     }
 }

@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = searchResultsController
-        searchController.searchBar.placeholder = NSLocalizedString("Enter keyword (e.g. pizza)", comment: "")
+        searchController.searchBar.placeholder = NSLocalizedString("Enter keyword (e.g. Apple)", comment: "")
         
         let searchContainer = UISearchContainerViewController(searchController: searchController)
         searchContainer.title = NSLocalizedString("Places", comment: "")

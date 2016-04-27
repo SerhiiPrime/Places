@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CameraCell: UICollectionViewCell {
     
@@ -28,16 +29,9 @@ class CameraCell: UICollectionViewCell {
     
     func updateUI() {
         cameraTitle.text = self.surfCam?.camTitle
-
-        let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
-        dispatch_async(dispatch_get_global_queue(qos , 0)) { () -> Void in
-            guard let imageData = NSData(contentsOfURL: NSURL(string:(self.surfCam?.camImage)!)!) else { return }
-            let image = UIImage(data:imageData)
-
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.cameraImageView?.image = image
-            }
-        }
+        guard let imgUrlString = surfCam?.camImage else {return}
+        guard let imgUrl = NSURL(string:imgUrlString) else {return}
+        cameraImageView.af_setImageWithURL(imgUrl, placeholderImage: placeholder)
     }
     
     override func prepareForReuse() {

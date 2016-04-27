@@ -76,6 +76,7 @@ extension PlacesViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlaceCell.reuseIdentifier, forIndexPath: indexPath) as? PlaceCell else { return UICollectionViewCell() }
         cell.place = places[indexPath.row]
+        
         return cell
     }
 }
@@ -93,7 +94,10 @@ extension PlacesViewController: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let queryString = searchController.searchBar.text ?? ""
-        fetchData(queryString)
+        
+        if queryString != "" {
+            fetchData(queryString)
+        }
     }
 }
 
