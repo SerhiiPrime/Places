@@ -116,6 +116,46 @@
             </objects>
             <point key="canvasLocation" x="4592" y="-640"/>
         </scene>
+        <!--Camera Player View Controller-->
+        <scene sceneID="hqT-xy-pcf">
+            <objects>
+                <viewController storyboardIdentifier="CameraPlayerViewController" id="7ed-nR-DpP" customClass="CameraPlayerViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XLJ-QJ-PiO"/>
+                        <viewControllerLayoutGuide type="bottom" id="G31-2e-XnO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fUp-2d-0XU">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ywH-no-47a">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <connections>
+                                    <segue destination="dTC-9Q-eyn" kind="embed" id="hFk-Jb-SQX"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ywH-no-47a" secondAttribute="trailing" id="7Ie-NY-2bq"/>
+                            <constraint firstItem="G31-2e-XnO" firstAttribute="top" secondItem="ywH-no-47a" secondAttribute="bottom" id="Gf3-Ag-LTu"/>
+                            <constraint firstItem="ywH-no-47a" firstAttribute="top" secondItem="XLJ-QJ-PiO" secondAttribute="bottom" id="TUb-R7-RXs"/>
+                            <constraint firstItem="ywH-no-47a" firstAttribute="leading" secondItem="fUp-2d-0XU" secondAttribute="leading" id="ppU-X5-3Tt"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rlS-ad-x5L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4584" y="624"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="ZQB-uJ-jKW">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="dTC-9Q-eyn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="69d-6k-cCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6817" y="624"/>
+        </scene>
         <!--Live Cams-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -179,6 +219,7 @@
                     <tabBarItem key="tabBarItem" title="Live Cams" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="cellectionView" destination="ZmN-rs-lsk" id="z21-MV-ABE"/>
+                        <segue destination="7ed-nR-DpP" kind="show" identifier="CameraPlayerViewController" id="7TR-8y-iDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

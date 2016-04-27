@@ -14,12 +14,18 @@ class WebCamViewController: UIViewController {
     
     var surfCams:[SurfCamera] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         surfCams = SurfCamera.loadCameras()
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == GlobalConstants.SegueIdentifiers.cameraPlayerViewController {
+            let camVC = segue.destinationViewController as! CameraPlayerViewController
+            camVC.camera = sender as! SurfCamera
+        }
+    }
 }
 
 
@@ -40,6 +46,6 @@ extension WebCamViewController: UICollectionViewDataSource {
 extension WebCamViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: [places[indexPath.row]])
+        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.cameraPlayerViewController, sender: surfCams[indexPath.row])
     }
 }

@@ -37,8 +37,6 @@ class SurfCamera {
                 allTheCams.append(surfCam)
             }
         }
-        
         return allTheCams
     }
-    
 }

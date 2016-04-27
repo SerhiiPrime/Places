@@ -58,7 +58,6 @@ class PlacesViewController: UIViewController {
         performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: places)
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == GlobalConstants.SegueIdentifiers.mapViewController {
             let mapVC = segue.destinationViewController as! MapViewController
