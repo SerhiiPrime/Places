@@ -17,11 +17,11 @@ class PlacesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        fetchData("Infinite loop")
     }
     
-    func fetchData() {
-        ServerManager.sharedManager.fetchNearbyVenues(lat: 37.332112, long: -122.0329646, query: "Infinite loop") { [weak self] result in
+    func fetchData(query: String) {
+        ServerManager.sharedManager.fetchNearbyVenues(lat: 37.332112, long: -122.0329646, query: query) { [weak self] result in
     
             if case .Success(let places) = result {
                 self?.places = (places as! [Place])
@@ -69,6 +69,7 @@ extension PlacesViewController: UICollectionViewDelegate {
 extension PlacesViewController: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        //filterString = searchController.searchBar.text ?? ""
+        let queryString = searchController.searchBar.text ?? ""
+        fetchData(queryString)
     }
 }
