@@ -148,6 +148,40 @@
             </objects>
             <point key="canvasLocation" x="4584" y="624"/>
         </scene>
+        <!--Amazing Map View Controller-->
+        <scene sceneID="Gq8-KE-rcL">
+            <objects>
+                <viewController storyboardIdentifier="AmazingMapViewController" id="0Z4-QQ-y7g" customClass="AmazingMapViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Akn-ZZ-KOB"/>
+                        <viewControllerLayoutGuide type="bottom" id="F9F-bd-hEj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BZ8-dd-8Gq">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lm-pF-1Fy">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0Z4-QQ-y7g" id="NW0-Ff-JXj"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="F9F-bd-hEj" firstAttribute="top" secondItem="2lm-pF-1Fy" secondAttribute="bottom" id="4eu-2F-XDC"/>
+                            <constraint firstItem="2lm-pF-1Fy" firstAttribute="top" secondItem="Akn-ZZ-KOB" secondAttribute="bottom" id="ABJ-Ea-5gj"/>
+                            <constraint firstItem="2lm-pF-1Fy" firstAttribute="leading" secondItem="BZ8-dd-8Gq" secondAttribute="leading" id="B3z-nC-ArA"/>
+                            <constraint firstAttribute="trailing" secondItem="2lm-pF-1Fy" secondAttribute="trailing" id="uuP-lR-nLx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="2lm-pF-1Fy" id="NMF-Oj-5AJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkk-AH-Ocs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4588" y="1821"/>
+        </scene>
         <!--AV Player View Controller-->
         <scene sceneID="ZQB-uJ-jKW">
             <objects>
@@ -254,7 +288,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="450"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-OH-UxH">
+                                                <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-OH-UxH">
                                                     <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmP-Z1-5fS">
@@ -295,6 +329,7 @@
                     <tabBarItem key="tabBarItem" title="Amazing Finds" id="kTN-w9-URe"/>
                     <connections>
                         <outlet property="collectionView" destination="h5W-0T-JnV" id="BHn-7L-zGZ"/>
+                        <segue destination="0Z4-QQ-y7g" kind="show" identifier="AmazingMapViewController" id="E8f-gd-Vuq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pby-kL-VJj" userLabel="First Responder" sceneMemberID="firstResponder"/>

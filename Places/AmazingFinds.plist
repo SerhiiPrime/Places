@@ -14,5 +14,283 @@
 		<key>lng</key>
 		<real>-110.8380304</real>
 	</dict>
+    <dict>
+        <key>title</key>
+        <string>Mysterious Desert Pattern</string>
+        <key>locationDescription</key>
+        <string>Red Sea Governorate, Egypt</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/crop-circle-egypt-google-earth-strange.jpg</string>
+        <key>lat</key>
+        <real>27.3805833</real>
+        <key>lng</key>
+        <real>33.6296449</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Giant Triangle</string>
+        <key>locationDescription</key>
+        <string>Wittmann, Arizona, USA</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/giant-triangle-google-earth.jpg</string>
+        <key>lat</key>
+        <real>33.747252</real>
+        <key>lng</key>
+        <real>-112.633853</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Shipwrecked SS Ayrfield with Trees</string>
+        <key>locationDescription</key>
+        <string>Homebush Bay, Sydney, Australia</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/shipwreck-forest-google-earth.jpg</string>
+        <key>lat</key>
+        <real>-33.836379</real>
+        <key>lng</key>
+        <real>151.080506</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Firefox Logo</string>
+        <key>locationDescription</key>
+        <string>Dayton, Oregon, USA</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/firefox-logo-google-earth.jpg</string>
+        <key>lat</key>
+        <real>45.1238528</real>
+        <key>lng</key>
+        <real>-123.1157915</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Guitar-Shaped Forest</string>
+        <key>locationDescription</key>
+        <string>Córdoba, Argentina</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/firefox-logo-google-earth.jpg</string>
+        <key>lat</key>
+        <real>-33.867886</real>
+        <key>lng</key>
+        <real>-63.987</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Heart-Shaped Lake</string>
+        <key>locationDescription</key>
+        <string>Columbia Station, Ohio, USA</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/heart-shaped-lake-google-earth.jpg</string>
+        <key>lat</key>
+        <real>41.303921</real>
+        <key>lng</key>
+        <real>-81.901693</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Giant Target</string>
+        <key>locationDescription</key>
+        <string>Nevada, USA</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/giant-target.jpg</string>
+        <key>lat</key>
+        <real>37.563936</real>
+        <key>lng</key>
+        <real>-116.85123</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Lion King</string>
+        <key>locationDescription</key>
+        <string>Dunstable LU6 2LD, UK</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/lion-google-earth.jpg</string>
+        <key>lat</key>
+        <real>51.848637</real>
+        <key>lng</key>
+        <real>-0.55462</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Potash Ponds</string>
+        <key>locationDescription</key>
+        <string>Moab, Utah, USA</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/potash-pools-google-earth.jpg</string>
+        <key>lat</key>
+        <real>38.4833778</real>
+        <key>lng</key>
+        <real>-109.683522</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Mysterious Pattern</string>
+        <key>locationDescription</key>
+        <string>Nevada, USA</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/tri-circle-google-earth.jpg</string>
+        <key>lat</key>
+        <real>37.629562</real>
+        <key>lng</key>
+        <real>-116.849556</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Shipwreck</string>
+        <key>locationDescription</key>
+        <string>Basrah, Iraq</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/shipwreck-iraq.jpg</string>
+        <key>lat</key>
+        <real>30.541634</real>
+        <key>lng</key>
+        <real>47.825445</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Uluru / Ayers Rock</string>
+        <key>locationDescription</key>
+        <string>Northern Territory, Austrlia</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/uluru-ayers-rock-google-earth.jpg</string>
+        <key>lat</key>
+        <real>-25.344375</real>
+        <key>lng</key>
+        <real>131.034401</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>UTA Flight 772 Desert Memorial</string>
+        <key>locationDescription</key>
+        <string>Sahara Desert, southern Ténéré of Niger</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/uta-flight-memorial.jpg</string>
+        <key>lat</key>
+        <real>16.864841</real>
+        <key>lng</key>
+        <real>11.953808</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Barringer Meteor Crater</string>
+        <key>locationDescription</key>
+        <string>Winslow, Arizona</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/arizona-meteor-crater.jpg</string>
+        <key>lat</key>
+        <real>35.027185</real>
+        <key>lng</key>
+        <real>-111.022388</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>All-Seeing Cat’s Eye</string>
+        <key>locationDescription</key>
+        <string>Winslow, Arizona</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/arizona-meteor-crater.jpg</string>
+        <key>lat</key>
+        <real>35.027185</real>
+        <key>lng</key>
+        <real>-111.022388</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Niagara Falls</string>
+        <key>locationDescription</key>
+        <string>Ontario, Canada</string>
+        <key>imgUrl</key>
+        <string>http://www.weirdgoogleearth.com/wp-content/uploads/2013/09/niagara-falls.jpg</string>
+        <key>lat</key>
+        <real>43.0782418</real>
+        <key>lng</key>
+        <real>-79.0751049</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Plane in the Woods Turned Into a Home</string>
+        <key>locationDescription</key>
+        <string>Hillsboro, Oregon, USA</string>
+        <key>imgUrl</key>
+        <string>http://www.weirdgoogleearth.com/wp-content/uploads/2013/11/plane-in-the-woods-turned-into-a-home.jpg</string>
+        <key>lat</key>
+        <real>45.408062</real>
+        <key>lng</key>
+        <real>-123.007863</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Ship-Shaped Mall</string>
+        <key>locationDescription</key>
+        <string>Hung Hom, Hong Kong</string>
+        <key>imgUrl</key>
+        <string>http://www.weirdgoogleearth.com/wp-content/uploads/2013/11/ship-shaped-mall.jpg</string>
+        <key>lat</key>
+        <real>22.303996</real>
+        <key>lng</key>
+        <real>114.189908</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Islands, straights, and clouds</string>
+        <key>locationDescription</key>
+        <string>The Bahamas</string>
+        <key>imgUrl</key>
+        <string>http://www.weirdgoogleearth.com/wp-content/uploads/2014/03/islands-straights-and-clouds.jpg</string>
+        <key>lat</key>
+        <real>23.463350</real>
+        <key>lng</key>
+        <real>-75.892003</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Perito Moreno Glacier</string>
+        <key>locationDescription</key>
+        <string>Santa Cruz Province, Argentina</string>
+        <key>imgUrl</key>
+        <string>http://www.weirdgoogleearth.com/wp-content/uploads/2014/04/perito-moreno-glacier.jpg</string>
+        <key>lat</key>
+        <real>-50.476390</real>
+        <key>lng</key>
+        <real>-73.071900</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>The Palm Islands</string>
+        <key>locationDescription</key>
+        <string>Dubai, United Arab Emirates</string>
+        <key>imgUrl</key>
+        <string>http://www.noupe.com/wp-content/uploads/trans/wp-content/uploads/2010/07/googleearth16.jpg</string>
+        <key>lat</key>
+        <real>33.396157</real>
+        <key>lng</key>
+        <real>44.486926</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Giant Gulliver</string>
+        <key>locationDescription</key>
+        <string>Hunters Hall Park, Craigmillar, Scotland</string>
+        <key>imgUrl</key>
+        <string>http://www.noupe.com/wp-content/uploads/trans/wp-content/uploads/2010/07/googleearth1.jpg</string>
+        <key>lat</key>
+        <real>25.118165</real>
+        <key>lng</key>
+        <real>55.133085</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
 </array>
 </plist>

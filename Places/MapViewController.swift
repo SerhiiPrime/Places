@@ -28,7 +28,6 @@ class MapViewController: UIViewController {
     private func configureUI() {
         mapView.showsUserLocation = true
         mapView.showsPointsOfInterest = true
-        mapView.showsUserLocation = true
         mapView.showsScale = true
         mapView.showsTraffic = true
         mapView.showsBuildings = true

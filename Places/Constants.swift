@@ -14,6 +14,7 @@ struct GlobalConstants {
     struct SegueIdentifiers {
         static let mapViewController = "MapViewController"
         static let cameraPlayerViewController = "CameraPlayerViewController"
+        static let amazingMapViewController = "AmazingMapViewController"
     }
     
     struct DefauptParams {

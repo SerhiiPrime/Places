@@ -21,9 +21,9 @@ class AmazingFindsViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == GlobalConstants.SegueIdentifiers.cameraPlayerViewController {
-            let camVC = segue.destinationViewController as! CameraPlayerViewController
-            camVC.camera = sender as! SurfCamera
+        if segue.identifier == GlobalConstants.SegueIdentifiers.amazingMapViewController {
+            let mapVC = segue.destinationViewController as! AmazingMapViewController
+            mapVC.place = sender as? AmazingFind
         }
     }
 }
@@ -46,6 +46,6 @@ extension AmazingFindsViewController: UICollectionViewDataSource {
 extension AmazingFindsViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.cameraPlayerViewController, sender: surfCams[indexPath.row])
+        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.amazingMapViewController, sender: places[indexPath.row])
     }
 }
