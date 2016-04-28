@@ -25,6 +25,10 @@
 		23D4BF861CD0D3630044F672 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BF851CD0D3630044F672 /* CameraCell.swift */; };
 		23D4BF881CD0D55E0044F672 /* CamsSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D4BF871CD0D55E0044F672 /* CamsSource.plist */; };
 		23D4BF8A1CD0D7BF0044F672 /* CameraPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BF891CD0D7BF0044F672 /* CameraPlayerViewController.swift */; };
+		23D4BF8C1CD161190044F672 /* AmazingFindsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BF8B1CD161190044F672 /* AmazingFindsViewController.swift */; };
+		23D4BF8E1CD162D70044F672 /* AmazingFindCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BF8D1CD162D70044F672 /* AmazingFindCell.swift */; };
+		23D4BF901CD1633C0044F672 /* AmazingFind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BF8F1CD1633C0044F672 /* AmazingFind.swift */; };
+		23D4BF921CD164900044F672 /* AmazingFinds.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23D4BF911CD164900044F672 /* AmazingFinds.plist */; };
 		73E4AA6B923D0356CB35EE83 /* Pods_Places.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E301E0B5F02D42305EFC7CA9 /* Pods_Places.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +55,10 @@
 		23D4BF851CD0D3630044F672 /* CameraCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		23D4BF871CD0D55E0044F672 /* CamsSource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CamsSource.plist; sourceTree = "<group>"; };
 		23D4BF891CD0D7BF0044F672 /* CameraPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPlayerViewController.swift; sourceTree = "<group>"; };
+		23D4BF8B1CD161190044F672 /* AmazingFindsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazingFindsViewController.swift; sourceTree = "<group>"; };
+		23D4BF8D1CD162D70044F672 /* AmazingFindCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazingFindCell.swift; sourceTree = "<group>"; };
+		23D4BF8F1CD1633C0044F672 /* AmazingFind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazingFind.swift; sourceTree = "<group>"; };
+		23D4BF911CD164900044F672 /* AmazingFinds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AmazingFinds.plist; sourceTree = "<group>"; };
 		E301E0B5F02D42305EFC7CA9 /* Pods_Places.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Places.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +122,7 @@
 			children = (
 				232E34BE1CCFBB6B0018E724 /* Place.swift */,
 				23D4BF831CD0D29C0044F672 /* SurfCamera.swift */,
+				23D4BF8F1CD1633C0044F672 /* AmazingFind.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -131,6 +140,7 @@
 			children = (
 				232E34C01CCFEDF40018E724 /* PlaceCell.swift */,
 				23D4BF851CD0D3630044F672 /* CameraCell.swift */,
+				23D4BF8D1CD162D70044F672 /* AmazingFindCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -143,6 +153,7 @@
 				232E34AB1CCFAD790018E724 /* WebCamViewController.swift */,
 				23D4BF891CD0D7BF0044F672 /* CameraPlayerViewController.swift */,
 				232E34AD1CCFAD8C0018E724 /* AboutMeViewController.swift */,
+				23D4BF8B1CD161190044F672 /* AmazingFindsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +181,7 @@
 			children = (
 				232E34A11CCF9D3D0018E724 /* Assets.xcassets */,
 				23D4BF871CD0D55E0044F672 /* CamsSource.plist */,
+				23D4BF911CD164900044F672 /* AmazingFinds.plist */,
 				232E34A31CCF9D3D0018E724 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -253,6 +265,7 @@
 				232E34A21CCF9D3D0018E724 /* Assets.xcassets in Resources */,
 				232E34A01CCF9D3D0018E724 /* Main.storyboard in Resources */,
 				23D4BF881CD0D55E0044F672 /* CamsSource.plist in Resources */,
+				23D4BF921CD164900044F672 /* AmazingFinds.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,8 +329,11 @@
 				23D4BF801CD09E9A0044F672 /* Constants.swift in Sources */,
 				232E34B91CCFB2530018E724 /* APIRouter.swift in Sources */,
 				232E34AA1CCFAD660018E724 /* PlacesViewController.swift in Sources */,
+				23D4BF901CD1633C0044F672 /* AmazingFind.swift in Sources */,
+				23D4BF8C1CD161190044F672 /* AmazingFindsViewController.swift in Sources */,
 				23D4BF7E1CD09C270044F672 /* MapViewController.swift in Sources */,
 				232E34BF1CCFBB6B0018E724 /* Place.swift in Sources */,
+				23D4BF8E1CD162D70044F672 /* AmazingFindCell.swift in Sources */,
 				23D4BF861CD0D3630044F672 /* CameraCell.swift in Sources */,
 				232E34991CCF9D3D0018E724 /* AppDelegate.swift in Sources */,
 				232E34BB1CCFB33A0018E724 /* Settings.swift in Sources */,

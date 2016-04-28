@@ -226,23 +226,80 @@
             </objects>
             <point key="canvasLocation" x="2246" y="624"/>
         </scene>
-        <!--About-->
-        <scene sceneID="zjp-4s-y0i">
+        <!--Amazing Finds-->
+        <scene sceneID="agI-yw-q1W">
             <objects>
-                <viewController storyboardIdentifier="AboutMeViewController" id="b10-MD-wan" customClass="AboutMeViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AmazingFindsViewController" id="IaQ-nG-KG4" customClass="AmazingFindsViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VsX-hq-YP9"/>
-                        <viewControllerLayoutGuide type="bottom" id="rWa-Qx-y22"/>
+                        <viewControllerLayoutGuide type="top" id="3fZ-Ct-pki"/>
+                        <viewControllerLayoutGuide type="bottom" id="YAZ-j8-pxZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OWa-4Q-0bb">
+                    <view key="view" contentMode="scaleToFill" id="TX1-Pn-Uai">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h5W-0T-JnV">
+                                <rect key="frame" x="0.0" y="140" width="1920" height="940"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JwF-Yx-ExQ">
+                                    <size key="itemSize" width="450" height="450"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="60" minY="100" maxX="60" maxY="100"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AmazingFindCell" id="RzU-GH-UGd" customClass="AmazingFindCell" customModule="Places" customModuleProvider="target">
+                                        <rect key="frame" x="60" y="100" width="450" height="450"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="450"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uw5-OH-UxH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmP-Z1-5fS">
+                                                    <rect key="frame" x="8" y="309" width="434" height="51"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fg-iU-e6L">
+                                                    <rect key="frame" x="8" y="360" width="434" height="63"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="locationLabel" destination="0Fg-iU-e6L" id="H0b-wO-eb2"/>
+                                            <outlet property="placeImageView" destination="Uw5-OH-UxH" id="e3F-g7-1bf"/>
+                                            <outlet property="placeTitleLabel" destination="bmP-Z1-5fS" id="bEp-ge-BGU"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="IaQ-nG-KG4" id="dK8-mu-fU2"/>
+                                    <outlet property="delegate" destination="IaQ-nG-KG4" id="Hsy-7q-dRM"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="YAZ-j8-pxZ" firstAttribute="top" secondItem="h5W-0T-JnV" secondAttribute="bottom" id="4fp-TU-rjP"/>
+                            <constraint firstAttribute="trailing" secondItem="h5W-0T-JnV" secondAttribute="trailing" id="9g4-Ng-ajw"/>
+                            <constraint firstItem="h5W-0T-JnV" firstAttribute="leading" secondItem="TX1-Pn-Uai" secondAttribute="leading" id="LEv-Xy-LXo"/>
+                            <constraint firstItem="h5W-0T-JnV" firstAttribute="top" secondItem="3fZ-Ct-pki" secondAttribute="bottom" constant="140" id="sol-ta-CII"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About" id="GYN-5B-jkA"/>
+                    <tabBarItem key="tabBarItem" title="Amazing Finds" id="kTN-w9-URe"/>
+                    <connections>
+                        <outlet property="collectionView" destination="h5W-0T-JnV" id="BHn-7L-zGZ"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xj7-lp-mBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pby-kL-VJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2248" y="1899"/>
+            <point key="canvasLocation" x="2254" y="1817"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -256,7 +313,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="b10-MD-wan" kind="relationship" relationship="viewControllers" id="DxF-Vg-zD6"/>
+                        <segue destination="IaQ-nG-KG4" kind="relationship" relationship="viewControllers" id="CBC-J9-KKF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

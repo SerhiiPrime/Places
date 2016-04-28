@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>Airplane Boneyard</string>
+		<key>locationDescription</key>
+		<string>Tucson, Arizona</string>
+		<key>imgUrl</key>
+		<string>http://twistedsifter.files.wordpress.com/2014/02/airplane-boneyard-tucson-arizona-google-earth.jpg</string>
+		<key>lat</key>
+		<real>32.1499889</real>
+		<key>lng</key>
+		<real>-110.8380304</real>
+	</dict>
+</array>
+</plist>
