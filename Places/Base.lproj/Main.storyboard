@@ -20,13 +20,13 @@
                                 <rect key="frame" x="0.0" y="101" width="1920" height="979"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pbS-kN-LNS">
                                     <size key="itemSize" width="300" height="370"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="139"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="60" minY="60" maxX="60" maxY="60"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaceCell" id="Es3-Gk-lPZ" customClass="PlaceCell" customModule="Places" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="60" width="300" height="370"/>
+                                        <rect key="frame" x="60" y="199" width="300" height="370"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="370"/>
@@ -36,7 +36,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGT-rE-V2J">
-                                                    <rect key="frame" x="0.0" y="335" width="300" height="35"/>
+                                                    <rect key="frame" x="0.0" y="327" width="300" height="35"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -50,19 +50,28 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlacesHeader" id="eF3-I2-8ro">
+                                    <rect key="frame" x="0.0" y="0.0" width="1920" height="139"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXX-C8-kEU">
+                                            <rect key="frame" x="693" y="8" width="534" height="86"/>
+                                            <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                            <state key="normal" title="All places on map"/>
+                                            <connections>
+                                                <action selector="viewOnMapAction:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="K60-Cn-nG2"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Map_pin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="u1C-Ls-TY3">
+                                            <rect key="frame" x="722" y="21" width="59" height="60"/>
+                                        </imageView>
+                                    </subviews>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="9pv-A4-QxB" id="cw7-de-fCR"/>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="lMO-lO-eLm"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXX-C8-kEU">
-                                <rect key="frame" x="1399" y="8" width="501" height="86"/>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="View on map"/>
-                                <connections>
-                                    <action selector="viewOnMapAction:" destination="9pv-A4-QxB" eventType="primaryActionTriggered" id="K60-Cn-nG2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -357,6 +366,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Map_pin_icon" width="2000" height="2723"/>
         <image name="first" width="30" height="30"/>
         <image name="place_placeholder" width="606" height="539"/>
     </resources>
