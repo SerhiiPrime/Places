@@ -25,6 +25,7 @@ class PlaceDetailsViewController: UIViewController {
         return UIImage(named: "place_placeholder")!
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         placeNameLabel.text = place.name
@@ -36,6 +37,17 @@ class PlaceDetailsViewController: UIViewController {
         
         if let url = place.iconConstructor?.assembleBigURL() {
             placeImageView.af_setImageWithURL(url, placeholderImage: placeholder)
+        }
+    }
+    
+    @IBAction func viewOnMapAction(sender: AnyObject) {
+        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: place)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == GlobalConstants.SegueIdentifiers.mapViewController {
+            let mapVC = segue.destinationViewController as! MapViewController
+            mapVC.venue = sender as? PlaceDetails
         }
     }
 }

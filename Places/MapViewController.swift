@@ -13,6 +13,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var venue: PlaceDetails?
     var places:[Place] = []
     
     override func viewDidLoad() {
@@ -35,8 +36,13 @@ class MapViewController: UIViewController {
     
     private func updateAnnotations() {
         mapView.removeAnnotations(mapView.annotations)
-        mapView.addAnnotations(places)
-        mapView.showAnnotations(places, animated: true)
+        if let ven = venue {
+            mapView.addAnnotations([ven])
+            mapView.showAnnotations([ven], animated: true)
+        } else {
+            mapView.addAnnotations(places)
+            mapView.showAnnotations(places, animated: true)
+        }
     }
 }
 
@@ -45,19 +51,21 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if  let annotation = annotation as? Place {
-            let view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier) as? MKPinAnnotationView {
-                dequeuedView.annotation = annotation
-                view = dequeuedView
-            } else {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier)
-            }
-            view.canShowCallout = true
-            view.pinTintColor = UIColor.mapPinColor()
-            return view
+        return pinAnnotationView(annotation)
+    }
+    
+    func pinAnnotationView(annotation: MKAnnotation) -> MKPinAnnotationView {
+        
+        let view: MKPinAnnotationView
+        if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier) as? MKPinAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier)
         }
-        return nil
+        view.canShowCallout = true
+        view.pinTintColor = UIColor.mapPinColor()
+        return view
     }
 }
 
