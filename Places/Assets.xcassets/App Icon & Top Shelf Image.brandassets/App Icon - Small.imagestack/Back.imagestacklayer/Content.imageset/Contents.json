@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "tv",
+      "filename" : "bgLayer2.png",
       "scale" : "1x"
     }
   ],
