@@ -46,23 +46,15 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         if  let annotation = annotation as? Place {
-            let identifier = "pin"
             let view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier) as? MKPinAnnotationView {
                 dequeuedView.annotation = annotation
                 view = dequeuedView
             } else {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier)
             }
             view.canShowCallout = true
-            // FIXME: make an extension on UIColor for key colors
-            view.pinTintColor = UIColor.init(red: 0.0/255.0, green: 169.0/255.0, blue: 120.0/255.0, alpha: 255.0/255.0)
-            
-            let button = UIButton(type: .Custom)
-            button.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-            button.backgroundColor = UIColor.redColor()
-            view.rightCalloutAccessoryView = button
-
+            view.pinTintColor = UIColor.mapPinColor()
             return view
         }
         return nil

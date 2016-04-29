@@ -18,7 +18,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vec-jE-ln5">
                                 <rect key="frame" x="0.0" y="101" width="1920" height="979"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="60" minimumInteritemSpacing="10" id="pbS-kN-LNS">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="70" minimumInteritemSpacing="10" id="pbS-kN-LNS">
                                     <size key="itemSize" width="300" height="388"/>
                                     <size key="headerReferenceSize" width="50" height="139"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>

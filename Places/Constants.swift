@@ -20,6 +20,10 @@ struct GlobalConstants {
     struct DefauptParams {
         static let defaultLat = 37.332112
         static let defaultLng = -122.0329646
-        static let defaultQuery = "Apple"
+        static let defaultQuery = "Apple store"
+    }
+    
+    struct ViewIdentifiers {
+        static let pinAnnotationIdentifier = "Pin"
     }
 }
