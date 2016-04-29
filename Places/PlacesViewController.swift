@@ -17,12 +17,25 @@ class PlacesViewController: UIViewController {
     let locationManager = CLLocationManager()
     var places:[Place] = []
     var fetchLocation = CLLocation(latitude: GlobalConstants.DefauptParams.defaultLat, longitude: GlobalConstants.DefauptParams.defaultLng)
+    var activityIndicator: UIActivityIndicatorView?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
         configureLocationManager()
         fetchData(GlobalConstants.DefauptParams.defaultQuery)
+        
+    }
+    
+    func configureUI() {
+        let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle = .White
+        self.view.addSubview(actInd)
+        activityIndicator = actInd
     }
     
     func configureLocationManager() {
@@ -64,7 +77,7 @@ class PlacesViewController: UIViewController {
             mapVC.places = sender as! [Place]
         } else if segue.identifier == GlobalConstants.SegueIdentifiers.placeDetailsViewController {
             let detVC = segue.destinationViewController as! PlaceDetailsViewController
-            detVC.place = sender as! Place
+            detVC.place = sender as! PlaceDetails
         }
     }
 }
@@ -96,7 +109,13 @@ extension PlacesViewController: UICollectionViewDataSource {
 extension PlacesViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: places[indexPath.row])
+        activityIndicator?.startAnimating()
+        ServerManager.sharedManager.getVenueDetails(places[indexPath.row].id) { [weak self] result in
+            self?.activityIndicator?.stopAnimating()
+            if case .Success(let details) = result {
+                self?.performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.placeDetailsViewController, sender: details)
+            }
+        }
     }
 }
 

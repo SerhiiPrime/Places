@@ -11,25 +11,6 @@ import MapKit
 import SwiftyJSON
 
 
-class IconURLConstructor {
-    private let size = "300x300"
-    private var prefix: String
-    private var sufix: String
-    
-    init?(json: JSON) {
-        guard let prefix = json["prefix"].string,
-            suffix = json["suffix"].string else { return nil }
-        
-        self.prefix = prefix
-        self.sufix = suffix
-    }
-    
-    func assembleURL() -> NSURL? {
-        return NSURL(string: "\(prefix)\(size)\(sufix)")
-    }
-}
-
-
 class Place: NSObject, MKAnnotation {
     let id: String
     let coordinate: CLLocationCoordinate2D

@@ -24,6 +24,7 @@ class PlaceDetails: NSObject, MKAnnotation {
     let ratingColor: String?
     let reasonSummary: String?
     let hoursStatus: String?
+    var iconConstructor: IconURLConstructor?
     
     init?(json: JSON) {
         guard let id = json["id"].string,
@@ -34,10 +35,43 @@ class PlaceDetails: NSObject, MKAnnotation {
         self.coordinate = CLLocationCoordinate2DMake(lat, long)
         self.name = json["name"].string
         self.phone = json["contact"]["formattedPhone"].string
-        self.address = json["location"]["formattedAddress"].string
+        self.address = json["location"]["formattedAddress"][0].string
         self.rating = json["rating"].double
         self.ratingColor = json["ratingColor"].string
-        self.reasonSummary = json["reasons"]["items"]["summary"].string
+        self.reasonSummary = json["reasons"]["items"][0]["summary"].string
         self.hoursStatus = json["hours"]["status"].string
+        
+        if let pref = json["bestPhoto"]["prefix"].string, suf = json["bestPhoto"]["suffix"].string {
+            self.iconConstructor = IconURLConstructor(pref: pref, suf:  suf)
+        }
+    }
+}
+
+
+class IconURLConstructor {
+    private let sizeSmal = "300x300"
+    private let sizeBig = "600x600"
+    private var prefix: String
+    private var sufix: String
+    
+    init?(json: JSON) {
+        guard let prefix = json["prefix"].string,
+            suffix = json["suffix"].string else { return nil }
+        
+        self.prefix = prefix
+        self.sufix = suffix
+    }
+    
+    init(pref: String, suf: String) {
+        self.prefix = pref
+        self.sufix = suf
+    }
+    
+    func assembleSmalURL() -> NSURL? {
+        return NSURL(string: "\(prefix)\(sizeSmal)\(sufix)")
+    }
+    
+    func assembleBigURL() -> NSURL? {
+        return NSURL(string: "\(prefix)\(sizeBig)\(sufix)")
     }
 }

@@ -38,7 +38,7 @@ class PlaceCell: UICollectionViewCell {
         imageFetchTask = ServerManager.sharedManager.getVenueIcon(currentPlace.id, completion: { [weak self] result in
             
             if let wself = self, case .Success(let urlConstructor as IconURLConstructor) = result {
-                if let url = urlConstructor.assembleURL() {
+                if let url = urlConstructor.assembleSmalURL() {
                     wself.placeImageView.af_setImageWithURL(url, placeholderImage: wself.placeholder)
                 }
             }

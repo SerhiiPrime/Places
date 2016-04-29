@@ -140,11 +140,77 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="place_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Jfx-wh-TiJ">
-                                <rect key="frame" x="72" y="90" width="722" height="513"/>
+                                <rect key="frame" x="73" y="90" width="655" height="551"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label Apple Inc sdgfsdfg  sdgf sadg  asdg  Label Apple Inc sdgfsdfg  sdgf sadg  asdg Label Apple Inc sdgfsdfg  sdgf sadg  asdg " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNT-lj-EYn">
+                                <rect key="frame" x="785" y="81" width="1095" height="147"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label Apple Inc sdgfsdfg  sdgf sadg  asdg  Label Apple Inc sdgfsdfg  sdgf sadg  asdg Label Apple Inc sdgfsdfg  sdgf sadg  asdg " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDC-Pz-6dS">
+                                <rect key="frame" x="785" y="236" width="1095" height="70"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="24"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="reason" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-tT-Yuu">
+                                <rect key="frame" x="873" y="553" width="1000" height="35"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="24"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="phone-icon1" translatesAutoresizingMaskIntoConstraints="NO" id="clt-2U-MRZ">
+                                <rect key="frame" x="785" y="340" width="53" height="49"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hours1" translatesAutoresizingMaskIntoConstraints="NO" id="3Rj-5E-Glm">
+                                <rect key="frame" x="785" y="408" width="53" height="49"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="gyh-PQ-S7s">
+                                <rect key="frame" x="785" y="476" width="53" height="49"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="review1" translatesAutoresizingMaskIntoConstraints="NO" id="YTN-O9-pfA">
+                                <rect key="frame" x="785" y="546" width="53" height="49"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone phone phone " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4D-Gq-OWC">
+                                <rect key="frame" x="873" y="347" width="1000" height="35"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="24"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hours" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ypw-ox-l15">
+                                <rect key="frame" x="873" y="415" width="1000" height="35"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="24"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="rating" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fp-fJ-ZSm">
+                                <rect key="frame" x="873" y="483" width="1000" height="35"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="24"/>
+                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryq-sp-rJo">
+                                <rect key="frame" x="199" y="684" width="402" height="86"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="39"/>
+                                <inset key="contentEdgeInsets" minX="112" minY="20" maxX="40" maxY="20"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                <state key="normal" title="View on map"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Map_pin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="T8B-34-kr7">
+                                <rect key="frame" x="232" y="697" width="59" height="60"/>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="0.14901960784313725" green="0.21176470588235294" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="hoursLabel" destination="Ypw-ox-l15" id="M9q-4Q-wqA"/>
+                        <outlet property="phoneLabel" destination="f4D-Gq-OWC" id="meU-Xj-RHv"/>
+                        <outlet property="placeAddress" destination="BDC-Pz-6dS" id="13j-QY-KCY"/>
+                        <outlet property="placeImageView" destination="Jfx-wh-TiJ" id="9Au-h6-VQM"/>
+                        <outlet property="placeNameLabel" destination="HNT-lj-EYn" id="ihY-X3-sak"/>
+                        <outlet property="ratingLabel" destination="1Fp-fJ-ZSm" id="Ygu-qZ-6LX"/>
+                        <outlet property="reasonLabel" destination="HEf-tT-Yuu" id="axv-AE-2NB"/>
                         <segue destination="X6b-as-5v5" kind="show" identifier="MapViewController" id="Mo7-BW-hQy"/>
                     </connections>
                 </viewController>
@@ -395,7 +461,11 @@
     <resources>
         <image name="Map_pin_icon" width="2000" height="2723"/>
         <image name="first" width="30" height="30"/>
+        <image name="hours1" width="148" height="148"/>
+        <image name="phone-icon1" width="128" height="128"/>
         <image name="place_placeholder" width="606" height="539"/>
+        <image name="review1" width="139" height="139"/>
+        <image name="star" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Mo7-BW-hQy"/>
