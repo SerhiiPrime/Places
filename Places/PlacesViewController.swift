@@ -62,6 +62,9 @@ class PlacesViewController: UIViewController {
         if segue.identifier == GlobalConstants.SegueIdentifiers.mapViewController {
             let mapVC = segue.destinationViewController as! MapViewController
             mapVC.places = sender as! [Place]
+        } else if segue.identifier == GlobalConstants.SegueIdentifiers.placeDetailsViewController {
+            let detVC = segue.destinationViewController as! PlaceDetailsViewController
+            detVC.place = sender as! Place
         }
     }
 }
@@ -93,7 +96,7 @@ extension PlacesViewController: UICollectionViewDataSource {
 extension PlacesViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: [places[indexPath.row]])
+        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: places[indexPath.row])
     }
 }
 

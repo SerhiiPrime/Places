@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Vec-jE-ln5" id="bDf-y7-343"/>
                         <segue destination="X6b-as-5v5" kind="show" identifier="MapViewController" id="bzt-un-Vjv"/>
+                        <segue destination="zCL-4Q-GFR" kind="show" identifier="PlaceDetailsViewController" id="TJw-FS-LHT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -124,7 +125,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cb6-NC-Ach" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4592" y="-640"/>
+            <point key="canvasLocation" x="6828" y="-640"/>
+        </scene>
+        <!--Place Details View Controller-->
+        <scene sceneID="zml-wJ-hUU">
+            <objects>
+                <viewController storyboardIdentifier="PlaceDetailsViewController" id="zCL-4Q-GFR" customClass="PlaceDetailsViewController" customModule="Places" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CeA-Ju-Bhc"/>
+                        <viewControllerLayoutGuide type="bottom" id="jxV-If-hyM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yMB-Yc-ccV">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="place_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Jfx-wh-TiJ">
+                                <rect key="frame" x="72" y="90" width="722" height="513"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <segue destination="X6b-as-5v5" kind="show" identifier="MapViewController" id="Mo7-BW-hQy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vx9-3o-klX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4560" y="-640"/>
         </scene>
         <!--Camera Player View Controller-->
         <scene sceneID="hqT-xy-pcf">
@@ -371,4 +397,7 @@
         <image name="first" width="30" height="30"/>
         <image name="place_placeholder" width="606" height="539"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Mo7-BW-hQy"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ public enum APIRouter: URLRequestConvertible {
     
     case SearchVenues(Double, Double, String)
     case VenueIcon(String)
+    case VenueDetails(String)
 
     
     public var URLRequest: NSMutableURLRequest {
@@ -38,6 +39,14 @@ public enum APIRouter: URLRequestConvertible {
                     "limit": "1"
                 ]
                 return ("venues/\(id)/photos", .GET, params, .URL, [:])
+                
+            case .VenueDetails(let id):
+                let params = [
+                    "client_id": Settings.API.clientID,
+                    "client_secret": Settings.API.clientSecret,
+                    "v": Settings.API.versionOfAPI
+                ]
+                return ("venues/\(id)", .GET, params, .URL, [:])
             }
         }()
         

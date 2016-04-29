@@ -19,6 +19,8 @@
 		232E34BF1CCFBB6B0018E724 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E34BE1CCFBB6B0018E724 /* Place.swift */; };
 		232E34C11CCFEDF40018E724 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232E34C01CCFEDF40018E724 /* PlaceCell.swift */; };
 		2350CFE81CD3891E006CD3B4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2350CFE71CD3891E006CD3B4 /* Extensions.swift */; };
+		2350CFEA1CD39078006CD3B4 /* PlaceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2350CFE91CD39078006CD3B4 /* PlaceDetailsViewController.swift */; };
+		23BE198B1CD3A43200C1D61F /* PlaceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE198A1CD3A43200C1D61F /* PlaceDetails.swift */; };
 		23D4BF7E1CD09C270044F672 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BF7D1CD09C270044F672 /* MapViewController.swift */; };
 		23D4BF801CD09E9A0044F672 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BF7F1CD09E9A0044F672 /* Constants.swift */; };
 		23D4BF821CD0B30B0044F672 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D4BF811CD0B30B0044F672 /* MapKit.framework */; };
@@ -51,6 +53,8 @@
 		232E34BE1CCFBB6B0018E724 /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		232E34C01CCFEDF40018E724 /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		2350CFE71CD3891E006CD3B4 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		2350CFE91CD39078006CD3B4 /* PlaceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailsViewController.swift; sourceTree = "<group>"; };
+		23BE198A1CD3A43200C1D61F /* PlaceDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetails.swift; sourceTree = "<group>"; };
 		23D4BF7D1CD09C270044F672 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		23D4BF7F1CD09E9A0044F672 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		23D4BF811CD0B30B0044F672 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -127,6 +131,7 @@
 				232E34BE1CCFBB6B0018E724 /* Place.swift */,
 				23D4BF831CD0D29C0044F672 /* SurfCamera.swift */,
 				23D4BF8F1CD1633C0044F672 /* AmazingFind.swift */,
+				23BE198A1CD3A43200C1D61F /* PlaceDetails.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				232E34A91CCFAD660018E724 /* PlacesViewController.swift */,
+				2350CFE91CD39078006CD3B4 /* PlaceDetailsViewController.swift */,
 				23D4BF7D1CD09C270044F672 /* MapViewController.swift */,
 				232E34AB1CCFAD790018E724 /* WebCamViewController.swift */,
 				23D4BF891CD0D7BF0044F672 /* CameraPlayerViewController.swift */,
@@ -334,9 +340,11 @@
 				23D4BF841CD0D29C0044F672 /* SurfCamera.swift in Sources */,
 				232E34B71CCFB1D50018E724 /* ServerManager.swift in Sources */,
 				23D4BF801CD09E9A0044F672 /* Constants.swift in Sources */,
+				23BE198B1CD3A43200C1D61F /* PlaceDetails.swift in Sources */,
 				232E34B91CCFB2530018E724 /* APIRouter.swift in Sources */,
 				232E34AA1CCFAD660018E724 /* PlacesViewController.swift in Sources */,
 				23D4BF901CD1633C0044F672 /* AmazingFind.swift in Sources */,
+				2350CFEA1CD39078006CD3B4 /* PlaceDetailsViewController.swift in Sources */,
 				23D4BF8C1CD161190044F672 /* AmazingFindsViewController.swift in Sources */,
 				2350CFE81CD3891E006CD3B4 /* Extensions.swift in Sources */,
 				23D4BF941CD1F3530044F672 /* AmazingMapViewController.swift in Sources */,

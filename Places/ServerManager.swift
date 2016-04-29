@@ -109,4 +109,34 @@ class ServerManager {
         
         return request.task
     }
+    
+    func getVenueDetails(id: String, completion: CompletionHandlerType) {
+        
+        Alamofire.request(APIRouter.VenueDetails(id)).validate().responseJSON { response in
+            
+            guard response.result.isSuccess else {
+                print("*** Error while venue details: \(response.result.error!)")
+                completion(.Failure(response.result.error!))
+                return
+            }
+            
+            guard let responseJSON = response.result.value as? [String: AnyObject] else {
+                fatalError("*** Unexpected json repsonse")
+            }
+            
+            let json = JSON(responseJSON)
+            
+            guard StatusCode(rawValue: json["meta"]["code"].intValue) == .Success else {
+                print("*** Server error: \(json["Error"])")
+                completion(.Failure(Error(code: json["StatusCode"].intValue, message: json["Error"].stringValue)))
+                return
+            }
+            
+            if let v = PlaceDetails(json: json["response"]["venue"]) {
+                completion(.Success(v))
+            } else {
+                completion(.Failure(Error(code: -1, message: "no details")))
+            }
+        }
+    }
 }

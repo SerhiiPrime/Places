@@ -1,8 +1,8 @@
 //
-//  Place.swift
+//  PlaceDetails.swift
 //  Places
 //
-//  Created by Serhii Onopriienko on 4/26/16.
+//  Created by Serhii Onopriienko on 4/29/16.
 //  Copyright © 2016 Serhii Onopriienko. All rights reserved.
 //
 
@@ -11,32 +11,19 @@ import MapKit
 import SwiftyJSON
 
 
-class IconURLConstructor {
-    private let size = "300x300"
-    private var prefix: String
-    private var sufix: String
+class PlaceDetails: NSObject, MKAnnotation {
     
-    init?(json: JSON) {
-        guard let prefix = json["prefix"].string,
-            suffix = json["suffix"].string else { return nil }
-        
-        self.prefix = prefix
-        self.sufix = suffix
-    }
-    
-    func assembleURL() -> NSURL? {
-        return NSURL(string: "\(prefix)\(size)\(sufix)")
-    }
-}
-
-
-class Place: NSObject, MKAnnotation {
     let id: String
-    let coordinate: CLLocationCoordinate2D
     let name: String?
     let phone: String?
+    let coordinate: CLLocationCoordinate2D
+    let address: String?
     var title: String? { return name }
     var subtitle: String? { return phone }
+    let rating: Double?
+    let ratingColor: String?
+    let reasonSummary: String?
+    let hoursStatus: String?
     
     init?(json: JSON) {
         guard let id = json["id"].string,
@@ -47,5 +34,10 @@ class Place: NSObject, MKAnnotation {
         self.coordinate = CLLocationCoordinate2DMake(lat, long)
         self.name = json["name"].string
         self.phone = json["contact"]["formattedPhone"].string
+        self.address = json["location"]["formattedAddress"].string
+        self.rating = json["rating"].double
+        self.ratingColor = json["ratingColor"].string
+        self.reasonSummary = json["reasons"]["items"]["summary"].string
+        self.hoursStatus = json["hours"]["status"].string
     }
 }
