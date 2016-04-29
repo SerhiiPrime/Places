@@ -12,12 +12,11 @@ class AmazingFindsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var places:[AmazingFind] = []
+    var places:[AmazingFind] = AmazingFind.loadPlaces()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        places = AmazingFind.loadPlaces()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

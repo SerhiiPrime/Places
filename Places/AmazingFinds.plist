@@ -40,7 +40,7 @@
     </dict>
     <dict>
         <key>title</key>
-        <string>Shipwrecked SS Ayrfield with Trees</string>
+        <string>Shipwrecked Ayrfield</string>
         <key>locationDescription</key>
         <string>Homebush Bay, Sydney, Australia</string>
         <key>imgUrl</key>
@@ -52,23 +52,11 @@
     </dict>
     <dict>
         <key>title</key>
-        <string>Firefox Logo</string>
-        <key>locationDescription</key>
-        <string>Dayton, Oregon, USA</string>
-        <key>imgUrl</key>
-        <string>http://twistedsifter.files.wordpress.com/2014/02/firefox-logo-google-earth.jpg</string>
-        <key>lat</key>
-        <real>45.1238528</real>
-        <key>lng</key>
-        <real>-123.1157915</real>
-    </dict>
-    <dict>
-        <key>title</key>
         <string>Guitar-Shaped Forest</string>
         <key>locationDescription</key>
         <string>Córdoba, Argentina</string>
         <key>imgUrl</key>
-        <string>http://twistedsifter.files.wordpress.com/2014/02/firefox-logo-google-earth.jpg</string>
+        <string>http://i0.wp.com/unusualplaces.org/wp-content/uploads/2012/09/Pedro_ureta_argentina_forest-guitar1.jpg</string>
         <key>lat</key>
         <real>-33.867886</real>
         <key>lng</key>
@@ -160,7 +148,7 @@
     </dict>
     <dict>
         <key>title</key>
-        <string>UTA Flight 772 Desert Memorial</string>
+        <string>Desert Memorial</string>
         <key>locationDescription</key>
         <string>Sahara Desert, southern Ténéré of Niger</string>
         <key>imgUrl</key>
@@ -173,18 +161,6 @@
     <dict>
         <key>title</key>
         <string>Barringer Meteor Crater</string>
-        <key>locationDescription</key>
-        <string>Winslow, Arizona</string>
-        <key>imgUrl</key>
-        <string>http://twistedsifter.files.wordpress.com/2014/02/arizona-meteor-crater.jpg</string>
-        <key>lat</key>
-        <real>35.027185</real>
-        <key>lng</key>
-        <real>-111.022388</real>
-    </dict>
-    <dict>
-        <key>title</key>
-        <string>All-Seeing Cat’s Eye</string>
         <key>locationDescription</key>
         <string>Winslow, Arizona</string>
         <key>imgUrl</key>
@@ -210,7 +186,7 @@
     </dict>
     <dict>
         <key>title</key>
-        <string>Plane in the Woods Turned Into a Home</string>
+        <string>Plane in the Woods</string>
         <key>locationDescription</key>
         <string>Hillsboro, Oregon, USA</string>
         <key>imgUrl</key>
@@ -272,9 +248,9 @@
         <key>imgUrl</key>
         <string>http://www.noupe.com/wp-content/uploads/trans/wp-content/uploads/2010/07/googleearth16.jpg</string>
         <key>lat</key>
-        <real>33.396157</real>
+        <real>25.118165</real>
         <key>lng</key>
-        <real>44.486926</real>
+        <real>55.133085</real>
         <key>zoom</key>
         <real>0</real>
     </dict>
@@ -286,9 +262,51 @@
         <key>imgUrl</key>
         <string>http://www.noupe.com/wp-content/uploads/trans/wp-content/uploads/2010/07/googleearth1.jpg</string>
         <key>lat</key>
-        <real>25.118165</real>
+        <real>55.9303920</real>
         <key>lng</key>
-        <real>55.133085</real>
+        <real>-3.1180350</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Kyiv Polytechnic Institute</string>
+        <key>locationDescription</key>
+        <string>Kyiv, Ukraine</string>
+        <key>imgUrl</key>
+        <string>http://aliro.com.ua/wp-content/uploads/kpi.jpg</string>
+        <key>lat</key>
+        <real>50.449505</real>
+        <key>lng</key>
+        <real>30.460786</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>Coca Cola Logo</string>
+        <key>locationDescription</key>
+        <string>Arica, Arica y Parinacota, Chile</string>
+        <key>imgUrl</key>
+        <string>http://twistedsifter.files.wordpress.com/2014/02/coca-cola-chile.jpg</string>
+        <key>lat</key>
+        <real>-18.529211</real>
+        <key>lng</key>
+        <real>-70.249941</real>
+        <key>zoom</key>
+        <real>0</real>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>World’s Largest Fingerprint</string>
+        <key>locationDescription</key>
+        <string>Brighton, Great Britain</string>
+        <key>imgUrl</key>
+        <string>https://s-media-cache-ak0.pinimg.com/600x315/88/16/5c/88165c5ba2bdb9cc582e836a007fcef5.jpg</string>
+        <key>lat</key>
+        <real>50.8440728</real>
+        <key>lng</key>
+        <real>-0.1720946</real>
         <key>zoom</key>
         <real>0</real>
     </dict>

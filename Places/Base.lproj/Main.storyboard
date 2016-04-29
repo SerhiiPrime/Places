@@ -347,7 +347,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.14901960780000001" green="0.21176470589999999" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ZmN-rs-lsk" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="140" id="TAu-X1-0ow"/>
                             <constraint firstItem="ZmN-rs-lsk" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Uhn-XL-Rne"/>

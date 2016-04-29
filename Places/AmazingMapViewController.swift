@@ -18,10 +18,6 @@ class AmazingMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         updateMapView()
     }
     
