@@ -18,7 +18,7 @@ class PlacesViewController: UIViewController {
     var places:[Place] = []
     var fetchLocation = CLLocation(latitude: GlobalConstants.DefauptParams.defaultLat, longitude: GlobalConstants.DefauptParams.defaultLng)
     var activityIndicator: UIActivityIndicatorView?
-    
+    var canSelectRow = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,12 +109,15 @@ extension PlacesViewController: UICollectionViewDataSource {
 extension PlacesViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        activityIndicator?.startAnimating()
-        ServerManager.sharedManager.getVenueDetails(places[indexPath.row].id) { [weak self] result in
-            self?.activityIndicator?.stopAnimating()
-            if case .Success(let details) = result {
-                self?.performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.placeDetailsViewController, sender: details)
+        if canSelectRow {
+            canSelectRow = false
+            ServerManager.sharedManager.getVenueDetails(places[indexPath.row].id) { [weak self] result in
+                self?.canSelectRow = true
+                if case .Success(let details) = result {
+                    self?.performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.placeDetailsViewController, sender: details)
+                }
             }
+            
         }
     }
 }

@@ -38,7 +38,7 @@ class PlaceDetails: NSObject, MKAnnotation {
         self.address = json["location"]["formattedAddress"][0].string
         self.rating = json["rating"].double
         self.ratingColor = json["ratingColor"].string
-        self.reasonSummary = json["reasons"]["items"][0]["summary"].string
+        self.reasonSummary = json["description"].string
         self.hoursStatus = json["hours"]["status"].string
         
         if let pref = json["bestPhoto"]["prefix"].string, suf = json["bestPhoto"]["suffix"].string {

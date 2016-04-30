@@ -34,6 +34,7 @@ class PlaceDetailsViewController: UIViewController {
         hoursLabel.text = place.hoursStatus
         ratingLabel.text = place.rating?.description
         reasonLabel.text = place.reasonSummary
+        reasonLabel.sizeToFit()
         
         if let url = place.iconConstructor?.assembleBigURL() {
             placeImageView.af_setImageWithURL(url, placeholderImage: placeholder)
