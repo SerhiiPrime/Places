@@ -13,19 +13,19 @@ class CameraPlayerViewController: UIViewController {
 
     var playerVC = AVPlayerViewController()
     var camera: SurfCamera!
-    var camUrl: NSURL?
+    var camUrl: URL?
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let url = NSURL(string: camera.camURL) {
+        if let url = URL(string: camera.camURL) {
             camUrl = url
-            playerVC.player = AVPlayer(URL: camUrl!)
+            playerVC.player = AVPlayer(url: camUrl!)
             playerVC.player?.play()
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        playerVC = segue.destinationViewController as! AVPlayerViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        playerVC = segue.destination as! AVPlayerViewController
     }
 }

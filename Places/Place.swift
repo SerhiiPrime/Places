@@ -21,8 +21,8 @@ class Place: NSObject, MKAnnotation {
     
     init?(json: JSON) {
         guard let id = json["id"].string,
-            lat = json["location"]["lat"].double,
-            long = json["location"]["lng"].double else { return nil }
+            let lat = json["location"]["lat"].double,
+            let long = json["location"]["lng"].double else { return nil }
         
         self.id = id
         self.coordinate = CLLocationCoordinate2DMake(lat, long)

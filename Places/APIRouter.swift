@@ -10,52 +10,71 @@ import Foundation
 import Alamofire
 
 
-public enum APIRouter: URLRequestConvertible {
+enum APIRouter: URLRequestConvertible {
     
-    case SearchVenues(Double, Double, String)
-    case VenueIcon(String)
-    case VenueDetails(String)
-
+    case searchVenues(lat: Double, long: Double, query: String)
+    case venueIcon(id: String)
+    case venueDetails(id: String)
     
-    public var URLRequest: NSMutableURLRequest {
-        let result: (path: String, method: Alamofire.Method, parameters: [String: AnyObject], encoding: Alamofire.ParameterEncoding, headers: [String: String]) = {
-            switch self {
-                
-            case .SearchVenues(let lat, let long, let query):
-                let params = [
-                    "client_id": Settings.API.clientID,
-                    "client_secret": Settings.API.clientSecret,
-                    "v": Settings.API.versionOfAPI,
-                    "ll": "\(lat),\(long)",
-                    "query": query
-                ]
-                return ("venues/search", .GET, params, .URL, [:])
-                
-            case .VenueIcon(let id):
-                let params = [
-                    "client_id": Settings.API.clientID,
-                    "client_secret": Settings.API.clientSecret,
-                    "v": Settings.API.versionOfAPI,
-                    "limit": "1"
-                ]
-                return ("venues/\(id)/photos", .GET, params, .URL, [:])
-                
-            case .VenueDetails(let id):
-                let params = [
-                    "client_id": Settings.API.clientID,
-                    "client_secret": Settings.API.clientSecret,
-                    "v": Settings.API.versionOfAPI
-                ]
-                return ("venues/\(id)", .GET, params, .URL, [:])
-            }
-        }()
+    static let baseURLString = Settings.API.baseURLString
+    
+    var method: HTTPMethod{
+        switch self {
+        case .searchVenues,
+             .venueIcon,
+             .venueDetails:
+            return .get
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .searchVenues:
+            return "venues/search"
+            
+        case .venueIcon(let id):
+            return "venues/\(id)/photos"
+            
+        case .venueDetails(let id):
+            return "venues/\(id)"
+        }
+    }
+    
+    var parameters: [String: Any]? {
+        switch self {
+        case .searchVenues(let lat, let long, let query):
+            return ["client_id":        Settings.API.clientID,
+                    "client_secret":    Settings.API.clientSecret,
+                    "v":                Settings.API.versionOfAPI,
+                    "ll":               "\(lat),\(long)",
+                    "query":            query]
+            
+        case .venueIcon:
+            return ["client_id":        Settings.API.clientID,
+                    "client_secret":    Settings.API.clientSecret,
+                    "v":                Settings.API.versionOfAPI,
+                    "limit":            "1"]
+            
+        case .venueDetails:
+            return ["client_id":        Settings.API.clientID,
+                    "client_secret":    Settings.API.clientSecret,
+                    "v":                Settings.API.versionOfAPI]
+        }
+    }
+    
+    var encoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
+    
+    
+    // MARK: URLRequestConvertible
+    
+    func asURLRequest() throws -> URLRequest {
+        let url = try APIRouter.baseURLString.asURL()
         
-        let baseURL = NSURL(string: Settings.API.baseURLString)
-        let URLRequest = NSMutableURLRequest(URL: baseURL!.URLByAppendingPathComponent(result.path))
-        URLRequest.HTTPMethod = result.method.rawValue
-        URLRequest.timeoutInterval = NSTimeInterval(60)
-        result.headers.forEach { URLRequest.setValue($1, forHTTPHeaderField: $0) }
-
-        return result.encoding.encode(URLRequest, parameters: result.parameters).0
+        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        urlRequest.httpMethod = method.rawValue
+        
+        return try encoding.encode(urlRequest, with: parameters)
     }
 }

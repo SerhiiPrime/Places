@@ -21,12 +21,12 @@ class MapViewController: UIViewController {
         configureUI()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateAnnotations()
     }
     
-    private func configureUI() {
+    fileprivate func configureUI() {
         mapView.showsUserLocation = true
         mapView.showsPointsOfInterest = true
         mapView.showsScale = true
@@ -34,7 +34,7 @@ class MapViewController: UIViewController {
         mapView.showsBuildings = true
     }
     
-    private func updateAnnotations() {
+    fileprivate func updateAnnotations() {
         mapView.removeAnnotations(mapView.annotations)
         if let ven = venue {
             mapView.addAnnotations([ven])
@@ -49,15 +49,15 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         return pinAnnotationView(annotation)
     }
     
-    func pinAnnotationView(annotation: MKAnnotation) -> MKPinAnnotationView {
+    func pinAnnotationView(_ annotation: MKAnnotation) -> MKPinAnnotationView {
         
         let view: MKPinAnnotationView
-        if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier) as? MKPinAnnotationView {
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: GlobalConstants.ViewIdentifiers.pinAnnotationIdentifier) as? MKPinAnnotationView {
             dequeuedView.annotation = annotation
             view = dequeuedView
         } else {

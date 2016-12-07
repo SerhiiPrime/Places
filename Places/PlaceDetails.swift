@@ -28,8 +28,8 @@ class PlaceDetails: NSObject, MKAnnotation {
     
     init?(json: JSON) {
         guard let id = json["id"].string,
-            lat = json["location"]["lat"].double,
-            long = json["location"]["lng"].double else { return nil }
+            let lat = json["location"]["lat"].double,
+            let long = json["location"]["lng"].double else { return nil }
         
         self.id = id
         self.coordinate = CLLocationCoordinate2DMake(lat, long)
@@ -41,7 +41,7 @@ class PlaceDetails: NSObject, MKAnnotation {
         self.reasonSummary = json["description"].string
         self.hoursStatus = json["hours"]["status"].string
         
-        if let pref = json["bestPhoto"]["prefix"].string, suf = json["bestPhoto"]["suffix"].string {
+        if let pref = json["bestPhoto"]["prefix"].string, let suf = json["bestPhoto"]["suffix"].string {
             self.iconConstructor = IconURLConstructor(pref: pref, suf:  suf)
         }
     }
@@ -49,14 +49,14 @@ class PlaceDetails: NSObject, MKAnnotation {
 
 
 class IconURLConstructor {
-    private let sizeSmal = "300x300"
-    private let sizeBig = "600x600"
-    private var prefix: String
-    private var sufix: String
+    fileprivate let sizeSmal = "300x300"
+    fileprivate let sizeBig = "600x600"
+    fileprivate var prefix: String
+    fileprivate var sufix: String
     
     init?(json: JSON) {
         guard let prefix = json["prefix"].string,
-            suffix = json["suffix"].string else { return nil }
+            let suffix = json["suffix"].string else { return nil }
         
         self.prefix = prefix
         self.sufix = suffix
@@ -67,11 +67,11 @@ class IconURLConstructor {
         self.sufix = suf
     }
     
-    func assembleSmalURL() -> NSURL? {
-        return NSURL(string: "\(prefix)\(sizeSmal)\(sufix)")
+    func assembleSmalURL() -> URL? {
+        return URL(string: "\(prefix)\(sizeSmal)\(sufix)")
     }
     
-    func assembleBigURL() -> NSURL? {
-        return NSURL(string: "\(prefix)\(sizeBig)\(sufix)")
+    func assembleBigURL() -> URL? {
+        return URL(string: "\(prefix)\(sizeBig)\(sufix)")
     }
 }

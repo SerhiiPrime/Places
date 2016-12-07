@@ -16,7 +16,7 @@ class CameraCell: UICollectionViewCell {
     @IBOutlet weak var cameraImageView: UIImageView!
     @IBOutlet weak var cameraTitle: UILabel!
     
-    private let placeholder: UIImage = {
+    fileprivate let placeholder: UIImage = {
         return UIImage(named: "place_placeholder")!
     }()
     
@@ -30,8 +30,8 @@ class CameraCell: UICollectionViewCell {
     func updateUI() {
         cameraTitle.text = self.surfCam?.camTitle
         guard let imgUrlString = surfCam?.camImage else {return}
-        guard let imgUrl = NSURL(string:imgUrlString) else {return}
-        cameraImageView.af_setImageWithURL(imgUrl, placeholderImage: placeholder)
+        guard let imgUrl = URL(string:imgUrlString) else {return}
+        cameraImageView.af_setImage(withURL: imgUrl, placeholderImage: placeholder)
     }
     
     override func prepareForReuse() {

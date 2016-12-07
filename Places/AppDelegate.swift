@@ -14,10 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Add a search view controller to the root `UITabBarController`.
         if let tabController = window?.rootViewController as? UITabBarController {
-            tabController.viewControllers?.insert(addSearchController(), atIndex: 0)
+            tabController.viewControllers?.insert(addSearchController(), at: 0)
         }
 
         return true
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func addSearchController() -> UIViewController {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let searchResultsController = storyboard.instantiateViewControllerWithIdentifier("PlacesViewController") as? PlacesViewController else {
+        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "PlacesViewController") as? PlacesViewController else {
             fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
         }
         

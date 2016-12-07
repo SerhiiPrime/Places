@@ -29,7 +29,7 @@ class SurfCamera {
     class func loadCameras() -> [SurfCamera] {
         
         var allTheCams = [SurfCamera]()
-        guard let filePath = NSBundle.mainBundle().pathForResource("CamsSource", ofType: "plist") else { return [] }
+        guard let filePath = Bundle.main.path(forResource: "CamsSource", ofType: "plist") else { return [] }
         
         if let camsFromArray = NSArray(contentsOfFile: filePath) {
             for dictionary in camsFromArray {

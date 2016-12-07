@@ -34,7 +34,7 @@ class AmazingFind {
     class func loadPlaces() -> [AmazingFind] {
         
         var allThePlaces = [AmazingFind]()
-        guard let filePath = NSBundle.mainBundle().pathForResource("AmazingFinds", ofType: "plist") else { return [] }
+        guard let filePath = Bundle.main.path(forResource: "AmazingFinds", ofType: "plist") else { return [] }
         
         if let placesFromArray = NSArray(contentsOfFile: filePath) {
             for dictionary in placesFromArray {

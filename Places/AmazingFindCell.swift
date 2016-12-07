@@ -16,7 +16,7 @@ class AmazingFindCell: UICollectionViewCell {
     @IBOutlet weak var placeTitleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
-    private let placeholder: UIImage = {
+    fileprivate let placeholder: UIImage = {
         return UIImage(named: "place_placeholder")!
     }()
     
@@ -31,8 +31,8 @@ class AmazingFindCell: UICollectionViewCell {
         placeTitleLabel.text = place.placeTitle
         locationLabel.text = place.placeLocationDescription
         guard let imgUrlString = place?.placeImageUrl else {return}
-        guard let imgUrl = NSURL(string:imgUrlString) else {return}
-        placeImageView.af_setImageWithURL(imgUrl, placeholderImage: placeholder)
+        guard let imgUrl = URL(string:imgUrlString) else {return}
+        placeImageView.af_setImage(withURL: imgUrl, placeholderImage: placeholder)
     }
     
     override func prepareForReuse() {

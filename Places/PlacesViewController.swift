@@ -30,10 +30,10 @@ class PlacesViewController: UIViewController {
     
     func configureUI() {
         let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
-        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
-        actInd.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds))
+        actInd.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0);
+        actInd.center = CGPoint(x: self.view.bounds.midX, y: self.view.bounds.midY)
         actInd.hidesWhenStopped = true
-        actInd.activityIndicatorViewStyle = .White
+        actInd.activityIndicatorViewStyle = .white
         self.view.addSubview(actInd)
         activityIndicator = actInd
     }
@@ -42,41 +42,41 @@ class PlacesViewController: UIViewController {
         locationManager.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
-            if CLLocationManager.authorizationStatus() == .NotDetermined {
+            if CLLocationManager.authorizationStatus() == .notDetermined {
                 locationManager.requestWhenInUseAuthorization()
-            } else if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse || CLLocationManager.authorizationStatus() == .AuthorizedAlways {
+            } else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways {
                 locationManager.requestLocation()
             }
         }
     }
     
-    func fetchData(query: String) {
+    func fetchData(_ query: String) {
         ServerManager.sharedManager.fetchNearbyVenues(lat: fetchLocation.coordinate.latitude, long: fetchLocation.coordinate.longitude, query: query) { [weak self] result in
     
-            if case .Success(let places) = result {
+            if case .success(let places) = result {
                 self?.places = (places as! [Place])
                 self?.collectionView.reloadData()
             }
-            if case .Failure(let error) = result {
+            if case .failure(let error) = result {
                 self?.handleError(error)
             }
         }
     }
     
-    func handleError(error: ErrorType) {
+    func handleError(_ error: Error) {
         print("*** Error while fetching places \(error)")
     }
     
-    @IBAction func viewOnMapAction(sender: AnyObject) {
-        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: places)
+    @IBAction func viewOnMapAction(_ sender: AnyObject) {
+        performSegue(withIdentifier: GlobalConstants.SegueIdentifiers.mapViewController, sender: places)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == GlobalConstants.SegueIdentifiers.mapViewController {
-            let mapVC = segue.destinationViewController as! MapViewController
+            let mapVC = segue.destination as! MapViewController
             mapVC.places = sender as! [Place]
         } else if segue.identifier == GlobalConstants.SegueIdentifiers.placeDetailsViewController {
-            let detVC = segue.destinationViewController as! PlaceDetailsViewController
+            let detVC = segue.destination as! PlaceDetailsViewController
             detVC.place = sender as! PlaceDetails
         }
     }
@@ -85,20 +85,20 @@ class PlacesViewController: UIViewController {
 
 extension PlacesViewController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return places.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PlaceCell.reuseIdentifier, forIndexPath: indexPath) as? PlaceCell else { return UICollectionViewCell() }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCell.reuseIdentifier, for: indexPath) as? PlaceCell else { return UICollectionViewCell() }
         cell.place = places[indexPath.row]
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "PlacesHeader", forIndexPath: indexPath)
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "PlacesHeader", for: indexPath)
             return header
         }
         return UICollectionReusableView()
@@ -108,13 +108,13 @@ extension PlacesViewController: UICollectionViewDataSource {
 
 extension PlacesViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if canSelectRow {
             canSelectRow = false
             ServerManager.sharedManager.getVenueDetails(places[indexPath.row].id) { [weak self] result in
                 self?.canSelectRow = true
-                if case .Success(let details) = result {
-                    self?.performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.placeDetailsViewController, sender: details)
+                if case .success(let details) = result {
+                    self?.performSegue(withIdentifier: GlobalConstants.SegueIdentifiers.placeDetailsViewController, sender: details)
                 }
             }
             
@@ -125,7 +125,7 @@ extension PlacesViewController: UICollectionViewDelegate {
 
 extension PlacesViewController: UISearchResultsUpdating {
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         let queryString = searchController.searchBar.text ?? ""
         
         if queryString != "" {
@@ -137,7 +137,7 @@ extension PlacesViewController: UISearchResultsUpdating {
 
 extension PlacesViewController: CLLocationManagerDelegate {
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.first else {return}
         fetchLocation = location
@@ -145,7 +145,7 @@ extension PlacesViewController: CLLocationManagerDelegate {
         fetchData(GlobalConstants.DefauptParams.defaultQuery)
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("*** Location Manager did Fail With Error \(error)")
     }
 }

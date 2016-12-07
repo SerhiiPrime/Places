@@ -17,7 +17,7 @@ class PlaceCell: UICollectionViewCell {
     @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     
-    private let placeholder: UIImage = {
+    fileprivate let placeholder: UIImage = {
         return UIImage(named: "place_placeholder")!
     }()
     
@@ -27,7 +27,7 @@ class PlaceCell: UICollectionViewCell {
         }
     }
     
-    var imageFetchTask:NSURLSessionTask?
+    var imageFetchTask:URLSessionTask?
     
     
     func updateUI() {
@@ -37,9 +37,9 @@ class PlaceCell: UICollectionViewCell {
             
         imageFetchTask = ServerManager.sharedManager.getVenueIcon(currentPlace.id, completion: { [weak self] result in
             
-            if let wself = self, case .Success(let urlConstructor as IconURLConstructor) = result {
+            if let wself = self, case .success(let urlConstructor as IconURLConstructor) = result {
                 if let url = urlConstructor.assembleSmalURL() {
-                    wself.placeImageView.af_setImageWithURL(url, placeholderImage: wself.placeholder)
+                    wself.placeImageView.af_setImage(withURL: url, placeholderImage: wself.placeholder)
                 }
             }
         })

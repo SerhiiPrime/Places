@@ -21,16 +21,16 @@ class AmazingMapViewController: UIViewController {
         updateMapView()
     }
     
-    private func configureUI() {
-        mapView.mapType = .SatelliteFlyover
+    fileprivate func configureUI() {
+        mapView.mapType = .satelliteFlyover
         mapView.showsScale = true
         mapView.showsBuildings = true
     }
     
-    private func updateMapView() {
+    fileprivate func updateMapView() {
         
         if let coordinates = place?.coordinate {
-            let camera = MKMapCamera(lookingAtCenterCoordinate: coordinates,fromEyeCoordinate: coordinates, eyeAltitude: 1000.0)
+            let camera = MKMapCamera(lookingAtCenter: coordinates,fromEyeCoordinate: coordinates, eyeAltitude: 1000.0)
             mapView.setCamera(camera, animated: false)
         }
     }

@@ -11,131 +11,101 @@ import Alamofire
 import SwiftyJSON
 
 
-typealias CompletionHandlerType = (Result) -> Void
+typealias CompletionHandler = (Result<Any, NetworkError>) -> Void
 
-enum Result {
-    case Success(AnyObject?)
-    case Failure(ErrorType)
+
+enum Result<T, E: Swift.Error> {
+    case success(T)
+    case failure(E)
+}
+
+
+struct NetworkError: Swift.Error {
+    let code: ErrorCode
+    let message: String
+    
+    init(code: ErrorCode, message: String) {
+        self.code = code
+        self.message = message
+    }
+    
+    init(error: Swift.Error) {
+        self.code = ErrorCode(rawValue: (error as NSError).code) ?? .unknownError
+        self.message = error.localizedDescription
+    }
+}
+
+
+enum ErrorCode: Int {
+    case success              = 200
+    case unknownError         = 1000
+    case unexpectedJsonValue  = 1001
+    case noNetwork            = -1009
 }
 
 
 class ServerManager {
     
-    struct Error: ErrorType {
-        var code: StatusCode
-        var message: String
-        
-        init(code: Int, message: String) {
-            self.code = StatusCode(rawValue: code) ?? .Failure
-            self.message = message
-        }
-        
-        init(code: StatusCode, message: String) {
-            self.code = code
-            self.message = message
-        }
-    }
-    
-    enum StatusCode: Int {
-        case Success        = 200
-        case Failure        = 1000
-    }
-    
-    
     static let sharedManager = ServerManager()
     
     
-    func fetchNearbyVenues(lat lat: Double, long: Double, query: String, completion: CompletionHandlerType) {
+    func fetchNearbyVenues(lat: Double, long: Double, query: String, completion: @escaping CompletionHandler) {
         
-        Alamofire.request(APIRouter.SearchVenues(lat, long, query)).validate().responseJSON { response in
+        Alamofire.request(APIRouter.searchVenues(lat: lat, long: long, query: query)).validate().responseJSON { response in
             
-            guard response.result.isSuccess else {
-                print("*** Error while fetching venues: \(response.result.error!)")
-                completion(.Failure(response.result.error!))
-                return
-            }
-            
-            guard let responseJSON = response.result.value as? [String: AnyObject] else {
-                fatalError("*** Unexpected json repsonse")
-            }
-            
-            let json = JSON(responseJSON)
-            print("*** \(#function)\n")
-            
-            guard StatusCode(rawValue: json["meta"]["code"].intValue) == .Success else {
-                print("*** Server error: \(json["Error"])")
-                completion(.Failure(Error(code: json["StatusCode"].intValue, message: json["Error"].stringValue)))
-                return
-            }
-            
-            var venues:[Place] = []
-            for venue in json["response"]["venues"].array! {
-                if let v = Place(json: venue) {
-                    venues.append(v)
+            switch response.result {
+            case let .success(data):
+                
+                let json = JSON(data)
+                var venues:[Place] = []
+                for venue in json["response"]["venues"].array! {
+                    if let v = Place(json: venue) {
+                        venues.append(v)
+                    }
                 }
+                completion(.success(venues))
+                
+            case let .failure(error): completion(.failure(NetworkError(error: error)))
             }
-            completion(.Success(venues))
         }
     }
     
-    func getVenueIcon(id: String, completion: CompletionHandlerType) -> NSURLSessionTask {
+    func getVenueIcon(_ id: String, completion: @escaping CompletionHandler) -> URLSessionTask {
         
-        let request = Alamofire.request(APIRouter.VenueIcon(id)).validate().responseJSON { response in
+        let request = Alamofire.request(APIRouter.venueIcon(id: id)).validate().responseJSON { response in
             
-            guard response.result.isSuccess else {
-                print("*** Error while venue icon: \(response.result.error!)")
-                completion(.Failure(response.result.error!))
-                return
-            }
-            
-            guard let responseJSON = response.result.value as? [String: AnyObject] else {
-                fatalError("*** Unexpected json repsonse")
-            }
-            
-            let json = JSON(responseJSON)
-            
-            guard StatusCode(rawValue: json["meta"]["code"].intValue) == .Success else {
-                print("*** Server error: \(json["Error"])")
-                completion(.Failure(Error(code: json["StatusCode"].intValue, message: json["Error"].stringValue)))
-                return
-            }
-            
-            if let iconUrl = IconURLConstructor(json: json["response"]["photos"]["items"][0]) {
-                completion(.Success(iconUrl))
-            } else {
-                completion(.Failure(Error(code: -1, message: "no images")))
+            switch response.result {
+            case let .success(data):
+                
+                let json = JSON(data)
+                if let iconUrl = IconURLConstructor(json: json["response"]["photos"]["items"][0]) {
+                    completion(.success(iconUrl))
+                } else {
+                    completion(.failure(NetworkError(code: ErrorCode.unexpectedJsonValue, message: "Unexpected Json Value")))
+                }
+                
+            case let .failure(error): completion(.failure(NetworkError(error: error)))
             }
         }
         
-        return request.task
+        return request.task!
     }
     
-    func getVenueDetails(id: String, completion: CompletionHandlerType) {
+    func getVenueDetails(_ id: String, completion: @escaping CompletionHandler) {
         
-        Alamofire.request(APIRouter.VenueDetails(id)).validate().responseJSON { response in
+        Alamofire.request(APIRouter.venueDetails(id: id)).validate().responseJSON { response in
             
-            guard response.result.isSuccess else {
-                print("*** Error while venue details: \(response.result.error!)")
-                completion(.Failure(response.result.error!))
-                return
-            }
-            
-            guard let responseJSON = response.result.value as? [String: AnyObject] else {
-                fatalError("*** Unexpected json repsonse")
-            }
-            
-            let json = JSON(responseJSON)
-            
-            guard StatusCode(rawValue: json["meta"]["code"].intValue) == .Success else {
-                print("*** Server error: \(json["Error"])")
-                completion(.Failure(Error(code: json["StatusCode"].intValue, message: json["Error"].stringValue)))
-                return
-            }
-            
-            if let v = PlaceDetails(json: json["response"]["venue"]) {
-                completion(.Success(v))
-            } else {
-                completion(.Failure(Error(code: -1, message: "no details")))
+            switch response.result {
+            case let .success(data):
+                
+                let json = JSON(data)
+                if let v = PlaceDetails(json: json["response"]["venue"]) {
+                    completion(.success(v))
+                } else {
+                    completion(.failure(NetworkError(code: ErrorCode.unexpectedJsonValue, message: "Unexpected Json Value")))
+                }
+                
+            case let .failure(error): completion(.failure(NetworkError(error: error)))
             }
         }
     }

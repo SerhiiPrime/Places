@@ -21,7 +21,7 @@ class PlaceDetailsViewController: UIViewController {
     
     var place: PlaceDetails!
     
-    private let placeholder: UIImage = {
+    fileprivate let placeholder: UIImage = {
         return UIImage(named: "place_placeholder")!
     }()
     
@@ -37,17 +37,17 @@ class PlaceDetailsViewController: UIViewController {
         reasonLabel.sizeToFit()
         
         if let url = place.iconConstructor?.assembleBigURL() {
-            placeImageView.af_setImageWithURL(url, placeholderImage: placeholder)
+            placeImageView.af_setImage(withURL: url, placeholderImage: placeholder)
         }
     }
     
-    @IBAction func viewOnMapAction(sender: AnyObject) {
-        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.mapViewController, sender: place)
+    @IBAction func viewOnMapAction(_ sender: AnyObject) {
+        performSegue(withIdentifier: GlobalConstants.SegueIdentifiers.mapViewController, sender: place)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == GlobalConstants.SegueIdentifiers.mapViewController {
-            let mapVC = segue.destinationViewController as! MapViewController
+            let mapVC = segue.destination as! MapViewController
             mapVC.venue = sender as? PlaceDetails
         }
     }

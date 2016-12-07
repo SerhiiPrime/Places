@@ -19,9 +19,9 @@ class AmazingFindsViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == GlobalConstants.SegueIdentifiers.amazingMapViewController {
-            let mapVC = segue.destinationViewController as! AmazingMapViewController
+            let mapVC = segue.destination as! AmazingMapViewController
             mapVC.place = sender as? AmazingFind
         }
     }
@@ -30,12 +30,12 @@ class AmazingFindsViewController: UIViewController {
 
 extension AmazingFindsViewController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return places.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AmazingFindCell.reuseIdentifier, forIndexPath: indexPath) as? AmazingFindCell else { return UICollectionViewCell() }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AmazingFindCell.reuseIdentifier, for: indexPath) as? AmazingFindCell else { return UICollectionViewCell() }
         cell.place = places[indexPath.row]
         return cell
     }
@@ -44,7 +44,7 @@ extension AmazingFindsViewController: UICollectionViewDataSource {
 
 extension AmazingFindsViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.amazingMapViewController, sender: places[indexPath.row])
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: GlobalConstants.SegueIdentifiers.amazingMapViewController, sender: places[indexPath.row])
     }
 }

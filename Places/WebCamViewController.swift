@@ -20,9 +20,9 @@ class WebCamViewController: UIViewController {
         surfCams = SurfCamera.loadCameras()
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == GlobalConstants.SegueIdentifiers.cameraPlayerViewController {
-            let camVC = segue.destinationViewController as! CameraPlayerViewController
+            let camVC = segue.destination as! CameraPlayerViewController
             camVC.camera = sender as! SurfCamera
         }
     }
@@ -31,12 +31,12 @@ class WebCamViewController: UIViewController {
 
 extension WebCamViewController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return surfCams.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CameraCell.reuseIdentifier, forIndexPath: indexPath) as? CameraCell else { return UICollectionViewCell() }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CameraCell.reuseIdentifier, for: indexPath) as? CameraCell else { return UICollectionViewCell() }
         cell.surfCam = surfCams[indexPath.row]
         return cell
     }
@@ -45,7 +45,7 @@ extension WebCamViewController: UICollectionViewDataSource {
 
 extension WebCamViewController: UICollectionViewDelegate {
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(GlobalConstants.SegueIdentifiers.cameraPlayerViewController, sender: surfCams[indexPath.row])
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: GlobalConstants.SegueIdentifiers.cameraPlayerViewController, sender: surfCams[indexPath.row])
     }
 }
