@@ -30,7 +30,7 @@ class AmazingFind {
         coordinate = CLLocationCoordinate2DMake(lat, lng)
     }
     
-    // Load the cameras from the plist file.
+    // Load places from the file.
     class func loadPlaces() -> [AmazingFind] {
         
         var allThePlaces = [AmazingFind]()

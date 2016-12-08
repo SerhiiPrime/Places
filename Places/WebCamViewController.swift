@@ -14,7 +14,6 @@ class WebCamViewController: UIViewController {
     
     var surfCams:[SurfCamera] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         surfCams = SurfCamera.loadCameras()

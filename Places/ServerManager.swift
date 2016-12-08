@@ -56,9 +56,13 @@ class ServerManager {
             switch response.result {
             case let .success(data):
                 
-                let json = JSON(data)
+                guard let venuesArray = JSON(data)["response"]["venues"].array else {
+                    completion(.failure(NetworkError(code: ErrorCode.unexpectedJsonValue, message: "Unexpected Json Value")))
+                    return
+                }
+            
                 var venues:[Place] = []
-                for venue in json["response"]["venues"].array! {
+                for venue in venuesArray {
                     if let v = Place(json: venue) {
                         venues.append(v)
                     }
@@ -70,15 +74,14 @@ class ServerManager {
         }
     }
     
-    func getVenueIcon(_ id: String, completion: @escaping CompletionHandler) -> URLSessionTask {
+    func getVenueIcon(_ id: String, completion: @escaping CompletionHandler) -> URLSessionTask? {
         
         let request = Alamofire.request(APIRouter.venueIcon(id: id)).validate().responseJSON { response in
             
             switch response.result {
             case let .success(data):
                 
-                let json = JSON(data)
-                if let iconUrl = IconURLConstructor(json: json["response"]["photos"]["items"][0]) {
+                if let iconUrl = IconURLConstructor(json: JSON(data)["response"]["photos"]["items"][0]) {
                     completion(.success(iconUrl))
                 } else {
                     completion(.failure(NetworkError(code: ErrorCode.unexpectedJsonValue, message: "Unexpected Json Value")))
@@ -88,7 +91,7 @@ class ServerManager {
             }
         }
         
-        return request.task!
+        return request.task
     }
     
     func getVenueDetails(_ id: String, completion: @escaping CompletionHandler) {
@@ -98,8 +101,7 @@ class ServerManager {
             switch response.result {
             case let .success(data):
                 
-                let json = JSON(data)
-                if let v = PlaceDetails(json: json["response"]["venue"]) {
+                if let v = PlaceDetails(json: JSON(data)["response"]["venue"]) {
                     completion(.success(v))
                 } else {
                     completion(.failure(NetworkError(code: ErrorCode.unexpectedJsonValue, message: "Unexpected Json Value")))

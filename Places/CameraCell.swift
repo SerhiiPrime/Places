@@ -26,7 +26,6 @@ class CameraCell: UICollectionViewCell {
         }
     }
     
-    
     func updateUI() {
         cameraTitle.text = self.surfCam?.camTitle
         guard let imgUrlString = surfCam?.camImage else {return}

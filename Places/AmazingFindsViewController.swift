@@ -14,7 +14,6 @@ class AmazingFindsViewController: UIViewController {
     
     var places:[AmazingFind] = AmazingFind.loadPlaces()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

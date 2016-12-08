@@ -25,7 +25,7 @@ class SurfCamera {
         self.camImage = image
     }
     
-    // Load the cameras from the plist file.
+    // Load cameras from plist file.
     class func loadCameras() -> [SurfCamera] {
         
         var allTheCams = [SurfCamera]()

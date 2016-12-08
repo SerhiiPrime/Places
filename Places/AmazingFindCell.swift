@@ -26,7 +26,6 @@ class AmazingFindCell: UICollectionViewCell {
         }
     }
     
-    
     func updateUI() {
         placeTitleLabel.text = place.placeTitle
         locationLabel.text = place.placeLocationDescription

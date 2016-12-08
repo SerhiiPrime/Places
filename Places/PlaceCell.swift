@@ -27,8 +27,7 @@ class PlaceCell: UICollectionViewCell {
         }
     }
     
-    var imageFetchTask:URLSessionTask?
-    
+    var imageFetchTask: URLSessionTask?
     
     func updateUI() {
         placeNameLabel.text = place?.name
